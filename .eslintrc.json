@@ -1,7 +1,8 @@
 {
   "settings": { "react": { "version": "detect" } },
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig-eslint.json"
+    "project": "./tsconfig.json"
   },
   "plugins": ["react"],
   "extends": ["eslint:recommended", "plugin:react/recommended"],

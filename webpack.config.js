@@ -10,10 +10,23 @@ module.exports = {
     fileName: "bundle.js",
   },
   resoleve: {
-    extensions: [".ts", ".tsx", ".js"],
+    extensions: [".ts", ".tsx", ".js", "scss"],
     aliad: {
       "@": path.join(__dirname, "src"),
     },
+  },
+  modules: {
+    rules: [
+      { test: /\.ts(x?)$/, loader: "ts-loader", excude: /node_modules/ },
+      {
+        test: /\.scss$/,
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader", options: { modules: true } },
+          { loader: "sass-loader" },
+        ],
+      },
+    ],
   },
   devServer: {
     contentBase: "./public",
