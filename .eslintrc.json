@@ -1,15 +1,14 @@
 {
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
+  "settings": { "react": { "version": "detect" } },
   "parserOptions": {
     "project": "./tsconfig-eslint.json"
   },
-  "extends": ["eslint:recommended"],
+  "plugins": ["react"],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
   "rules": {
     "@typescript-eslint/consistent-type-definitions": "off",
-    "@typescript-eslint/strict-boolean-expressions": "off"
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error"
   }
 }
