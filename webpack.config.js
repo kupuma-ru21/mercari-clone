@@ -1,42 +1,43 @@
-const path = require("path");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: "development",
-  entry: "./src/main/index.tsx",
+  mode: 'development',
+  entry: './src/main/index.tsx',
   output: {
-    path: path.join(__dirname, "public/js"),
-    publicPath: "/public/js",
-    fileName: "bundle.js",
+    path: path.join(__dirname, 'public/js'),
+    publicPath: '/public/js',
+    filename: 'bundle.js',
   },
-  resoleve: {
-    extensions: [".ts", ".tsx", ".js", "scss"],
-    aliad: {
-      "@": path.join(__dirname, "src"),
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', 'scss'],
+    alias: {
+      '@': path.join(__dirname, 'src'),
     },
   },
-  modules: {
+  module: {
     rules: [
-      { test: /\.ts(x?)$/, loader: "ts-loader", excude: /node_modules/ },
+      { test: /\.ts(x?)$/, loader: 'ts-loader', exclude: /node_modules/ },
       {
         test: /\.scss$/,
         use: [
-          { loader: "style-loader" },
-          { loader: "css-loader", options: { modules: true } },
-          { loader: "sass-loader" },
+          { loader: 'style-loader' },
+          { loader: 'css-loader', options: { modules: true } },
+          { loader: 'sass-loader' },
         ],
       },
     ],
   },
   devServer: {
-    contentBase: "./public",
+    contentBase: './public',
     writeToDisk: true,
     historyApiFallback: true,
     port: 2001,
   },
   externals: {
-    react: "React",
-    "react-dom": "ReactDOM",
+    react: 'React',
+    'react-dom': 'ReactDOM',
   },
   plugins: [new CleanWebpackPlugin()],
+  devtool: 'source-map',
 };
