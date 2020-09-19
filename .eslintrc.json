@@ -1,0 +1,15 @@
+{
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "parserOptions": {
+    "project": "./tsconfig-eslint.json"
+  },
+  "extends": ["eslint:recommended"],
+  "rules": {
+    "@typescript-eslint/consistent-type-definitions": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off"
+  }
+}
