@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import useReactRouter from 'use-react-router';
 import { TextField } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
@@ -39,4 +39,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default memo(Header);
