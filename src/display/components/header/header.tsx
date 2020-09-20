@@ -30,7 +30,11 @@ const Header: React.FC = () => {
           onChange={onChange}
         />
       </form>
-      <SearchIcon className={Styles.icon} />
+      <SearchIcon
+        titleAccess="svg"
+        className={Styles.icon}
+        onClick={onSubmit}
+      />
     </div>
   );
 };
