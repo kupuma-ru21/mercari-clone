@@ -18,6 +18,8 @@
     "import/extensions": "off",
     "import/no-unresolved": "off",
     "import/prefer-default-export": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
     "react/jsx-filename-extension": "off",
     "no-use-before-define": "off",
     "react/jsx-uses-react": "error",
