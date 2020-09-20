@@ -8,6 +8,7 @@ import Styles from './header-styles.scss';
 const Header: React.FC = () => {
   const { history } = useReactRouter();
   const [state, setState] = useState({ search: '' });
+  const returnHome = (): void => history.push('/');
   const onChange = (event): void => {
     setState({
       ...state,
@@ -18,7 +19,7 @@ const Header: React.FC = () => {
 
   return (
     <div className={Styles.headerWrap}>
-      <img src={src} alt={alt} />
+      <img src={src} alt={alt} onClick={returnHome} />
       <form aria-label="form" onSubmit={onSubmit}>
         <TextField
           variant="outlined"
