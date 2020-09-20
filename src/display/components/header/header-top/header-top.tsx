@@ -3,9 +3,9 @@ import useReactRouter from 'use-react-router';
 import { TextField } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { src, alt, placeholder } from '@/constans';
-import Styles from './header-styles.scss';
+import Styles from './header-top-style.scss';
 
-const Header: React.FC = () => {
+const HeaderTop: React.FC = () => {
   const { history } = useReactRouter();
   const [state, setState] = useState({ search: '' });
   const returnHome = (): void => history.push('/');
@@ -18,7 +18,7 @@ const Header: React.FC = () => {
   const onSubmit = (): void => history.push(`/search?keyword=${state.search}`);
 
   return (
-    <div className={Styles.headerWrap}>
+    <div className={Styles.headerTopWrap}>
       <img src={src} alt={alt} onClick={returnHome} />
       <form aria-label="form" onSubmit={onSubmit}>
         <TextField
@@ -40,4 +40,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default memo(Header);
+export default memo(HeaderTop);
