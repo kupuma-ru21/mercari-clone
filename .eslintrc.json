@@ -23,6 +23,7 @@
     "jsx-a11y/mouse-events-have-key-events": "off",
     "jsx-a11y/role-has-required-aria-props": "off",
     "react/jsx-filename-extension": "off",
+    "react/prop-types": "off",
     "no-use-before-define": "off",
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
