@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import useReactRouter from 'use-react-router';
 import { Props } from '@/types/modal';
-import Styles from './modal-style.scss';
+import { ModalList } from '@/display/components';
 
 const Modal: React.FC<Props> = ({ elInfo }: Props) => {
   const [displayFlg, setDisplayFlg] = useState(false);
@@ -20,15 +20,7 @@ const Modal: React.FC<Props> = ({ elInfo }: Props) => {
         {elInfo.el}
       </div>
       <div role="directory">
-        {displayFlg && (
-          <>
-            {elInfo.modal.map((val: any) => (
-              <li className={Styles.list} key={val.id}>
-                {val.text}
-              </li>
-            ))}
-          </>
-        )}
+        {displayFlg && <ModalList list={elInfo.modal} />}
       </div>
     </div>
   );

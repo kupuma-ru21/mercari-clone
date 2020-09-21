@@ -6,3 +6,4 @@ export { default as HeaderBottomRight } from './header/header-bottom-right/heade
 export { default as SearchByCategory } from './header/search-by-category/search-by-category';
 export { default as SearchByBrand } from './header/search-by-brand/search-by-brand';
 export { default as Modal } from './header/modal/modal';
+export { default as ModalList } from './header/modal-list/modal-list';
