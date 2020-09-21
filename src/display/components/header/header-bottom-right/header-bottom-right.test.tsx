@@ -18,6 +18,11 @@ const rendering = (): RenderTypes => {
   return { history };
 };
 
+const transitionResult = (history: MemoryHistory, expectPath: string) => {
+  expect(history.length).toBe(2);
+  expect(history.location.pathname).toBe(expectPath);
+};
+
 describe('HeaderBottomRight Component', () => {
   test('login button mouseOver and mouseOut', () => {
     rendering();
@@ -33,7 +38,13 @@ describe('HeaderBottomRight Component', () => {
     const { history } = rendering();
     const registerButton = screen.getByTitle('memberRegister');
     fireEvent.click(registerButton);
-    expect(history.length).toBe(2);
-    expect(history.location.pathname).toBe('/signup');
+    transitionResult(history, '/signup');
+  });
+
+  test('login button click signup page display', () => {
+    const { history } = rendering();
+    const loginButton = screen.getByTitle('login');
+    fireEvent.click(loginButton);
+    transitionResult(history, '/login');
   });
 });
