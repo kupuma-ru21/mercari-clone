@@ -1,4 +1,5 @@
 import React, { memo, useState } from 'react';
+import useReactRouter from 'use-react-router';
 import { Button } from '@material-ui/core';
 import Styles from './header-bottom-right-style.scss';
 
@@ -8,6 +9,8 @@ const HeaderBottomRight: React.FC = () => {
   const [loginVariant, setLoginVariant] = useState<Variant>('outlined');
   const loginMouseOver = (): void => setLoginVariant('contained');
   const loginMouseOut = (): void => setLoginVariant('outlined');
+  const { history } = useReactRouter();
+  const register = (): void => history.push('/signup');
 
   return (
     <div className={Styles.rightSide}>
@@ -16,6 +19,7 @@ const HeaderBottomRight: React.FC = () => {
         variant="contained"
         color="secondary"
         size="small"
+        onClick={register}
       >
         新規会員登録
       </Button>
