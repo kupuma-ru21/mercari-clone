@@ -43,6 +43,14 @@ const mouseEvent = (elInfo) => {
   expect(directoryAtMouseOut).toBeEmptyDOMElement();
 };
 
+const screenTransitionEvent = (elInfo, expectPath) => {
+  const { history } = rendering(elInfo);
+  const heading = screen.getByRole('heading');
+  fireEvent.click(heading);
+  expect(history.length).toBe(2);
+  expect(history.location.pathname).toBe(expectPath);
+};
+
 describe('Modal Components', () => {
   test('SearchByCategory check for the existence of a directory', () => {
     mouseEvent(elCategoryInfo);
@@ -53,18 +61,10 @@ describe('Modal Components', () => {
   });
 
   test('SearchByCategory click category page display', () => {
-    const { history } = rendering(elCategoryInfo);
-    const heading = screen.getByRole('heading');
-    fireEvent.click(heading);
-    expect(history.length).toBe(2);
-    expect(history.location.pathname).toBe('/category');
+    screenTransitionEvent(elCategoryInfo, '/category');
   });
 
   test('SearchByBrand click category page display', () => {
-    const { history } = rendering(elBrandInfo);
-    const heading = screen.getByRole('heading');
-    fireEvent.click(heading);
-    expect(history.length).toBe(2);
-    expect(history.location.pathname).toBe('/brand');
+    screenTransitionEvent(elBrandInfo, '/brand');
   });
 });
