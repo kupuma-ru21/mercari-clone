@@ -1,0 +1,24 @@
+.leftSide {
+  display: flex;
+  .categoryWrap {
+    @extend .commonClass;
+    padding-right: 10px;
+  }
+  .brandWrap {
+    @extend .commonClass;
+    padding-left: 10px;
+  }
+}
+
+.commonClass {
+  display: flex;
+  cursor: pointer;
+  .icon {
+    color: rgb(236, 69, 62);
+    margin-right: 4px;
+  }
+  .text {
+    font-weight: 600;
+    font-size: 14px;
+  }
+}
