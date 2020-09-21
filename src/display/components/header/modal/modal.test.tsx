@@ -1,12 +1,16 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
+import { createMemoryHistory, MemoryHistory } from 'history';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { categoryArray, brandArray } from '@/constans';
 import { ElInfo } from '@/types/modal';
 import { Modal, SearchByCategory, SearchByBrand } from '@/display/components';
 
-const rendering = (elInfo: ElInfo) => {
+type RenderTypes = {
+  history: MemoryHistory;
+};
+
+const rendering = (elInfo: ElInfo): RenderTypes => {
   const history = createMemoryHistory();
   const { el, modal } = elInfo;
   render(
@@ -14,6 +18,7 @@ const rendering = (elInfo: ElInfo) => {
       <Modal elInfo={{ el, modal }} />
     </Router>
   );
+  return { history };
 };
 
 const expectModalResult = ({ directoryAtMouseOver, directoryAtMouseOut }) => {
@@ -42,5 +47,14 @@ describe('Modal Components', () => {
     fireEvent.mouseOut(heading);
     const directoryAtMouseOut = screen.getByRole('directory');
     expectModalResult({ directoryAtMouseOver, directoryAtMouseOut });
+  });
+
+  test('SearchByCategory click category page display', () => {
+    const elInfo: ElInfo = { el: <SearchByCategory />, modal: categoryArray };
+    const { history } = rendering(elInfo);
+    const heading = screen.getByRole('heading');
+    fireEvent.click(heading);
+    expect(history.length).toBe(2);
+    expect(history.location.pathname).toBe('/category');
   });
 });
