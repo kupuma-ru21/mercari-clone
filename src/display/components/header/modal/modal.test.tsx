@@ -32,30 +32,24 @@ const elBrandInfo: ElInfo = {
   name: 'brand',
 };
 
-const expectModalResult = ({ directoryAtMouseOver, directoryAtMouseOut }) => {
+const mouseEvent = (elInfo) => {
+  rendering(elInfo);
+  const heading = screen.getByRole('heading');
+  fireEvent.mouseOver(heading);
+  const directoryAtMouseOver = screen.getByRole('directory');
+  fireEvent.mouseOut(heading);
+  const directoryAtMouseOut = screen.getByRole('directory');
   expect(directoryAtMouseOver).toBeInTheDocument();
   expect(directoryAtMouseOut).toBeEmptyDOMElement();
 };
 
 describe('Modal Components', () => {
   test('SearchByCategory check for the existence of a directory', () => {
-    rendering(elCategoryInfo);
-    const heading = screen.getByRole('heading');
-    fireEvent.mouseOver(heading);
-    const directoryAtMouseOver = screen.getByRole('directory');
-    fireEvent.mouseOut(heading);
-    const directoryAtMouseOut = screen.getByRole('directory');
-    expectModalResult({ directoryAtMouseOver, directoryAtMouseOut });
+    mouseEvent(elCategoryInfo);
   });
 
   test('SearchByBrand check for the existence of a directory', () => {
-    rendering(elBrandInfo);
-    const heading = screen.getByRole('heading');
-    fireEvent.mouseOver(heading);
-    const directoryAtMouseOver = screen.getByRole('directory');
-    fireEvent.mouseOut(heading);
-    const directoryAtMouseOut = screen.getByRole('directory');
-    expectModalResult({ directoryAtMouseOver, directoryAtMouseOut });
+    mouseEvent(elBrandInfo);
   });
 
   test('SearchByCategory click category page display', () => {
