@@ -5,3 +5,4 @@ export { default as HeaderBottomLeft } from './header/header-bottom-left/header-
 export { default as HeaderBottomRight } from './header/header-bottom-right/header-bottom-right';
 export { default as SearchByCategory } from './header/search-by-category/search-by-category';
 export { default as SearchByBrand } from './header/search-by-brand/search-by-brand';
+export { default as Modal } from './header/modal/modal';
