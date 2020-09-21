@@ -21,7 +21,7 @@ const rendering = (elInfo: ElInfo): RenderTypes => {
   return { history };
 };
 
-const mouseEvent = (elInfo) => {
+const mouseEvent = (elInfo: ElInfo) => {
   rendering(elInfo);
   const heading = screen.getByRole('heading');
   fireEvent.mouseOver(heading);
@@ -32,7 +32,7 @@ const mouseEvent = (elInfo) => {
   expect(directoryAtMouseOut).toBeEmptyDOMElement();
 };
 
-const screenTransitionEvent = (elInfo, expectPath) => {
+const screenTransitionEvent = (elInfo: ElInfo, expectPath: string) => {
   const { history } = rendering(elInfo);
   const heading = screen.getByRole('heading');
   fireEvent.click(heading);
