@@ -21,6 +21,17 @@ const rendering = (elInfo: ElInfo): RenderTypes => {
   return { history };
 };
 
+const elCategoryInfo: ElInfo = {
+  el: <SearchByCategory />,
+  modal: categoryArray,
+  name: 'category',
+};
+const elBrandInfo: ElInfo = {
+  el: <SearchByBrand />,
+  modal: brandArray,
+  name: 'brand',
+};
+
 const expectModalResult = ({ directoryAtMouseOver, directoryAtMouseOut }) => {
   expect(directoryAtMouseOver).toBeInTheDocument();
   expect(directoryAtMouseOut).toBeEmptyDOMElement();
@@ -28,12 +39,7 @@ const expectModalResult = ({ directoryAtMouseOver, directoryAtMouseOut }) => {
 
 describe('Modal Components', () => {
   test('SearchByCategory check for the existence of a directory', () => {
-    const elInfo: ElInfo = {
-      el: <SearchByCategory />,
-      modal: categoryArray,
-      name: 'category',
-    };
-    rendering(elInfo);
+    rendering(elCategoryInfo);
     const heading = screen.getByRole('heading');
     fireEvent.mouseOver(heading);
     const directoryAtMouseOver = screen.getByRole('directory');
@@ -43,12 +49,7 @@ describe('Modal Components', () => {
   });
 
   test('SearchByBrand check for the existence of a directory', () => {
-    const elInfo: ElInfo = {
-      el: <SearchByBrand />,
-      modal: brandArray,
-      name: 'brand',
-    };
-    rendering(elInfo);
+    rendering(elBrandInfo);
     const heading = screen.getByRole('heading');
     fireEvent.mouseOver(heading);
     const directoryAtMouseOver = screen.getByRole('directory');
@@ -58,12 +59,7 @@ describe('Modal Components', () => {
   });
 
   test('SearchByCategory click category page display', () => {
-    const elInfo: ElInfo = {
-      el: <SearchByCategory />,
-      modal: categoryArray,
-      name: 'category',
-    };
-    const { history } = rendering(elInfo);
+    const { history } = rendering(elCategoryInfo);
     const heading = screen.getByRole('heading');
     fireEvent.click(heading);
     expect(history.length).toBe(2);
@@ -71,12 +67,7 @@ describe('Modal Components', () => {
   });
 
   test('SearchByBrand click category page display', () => {
-    const elInfo: ElInfo = {
-      el: <SearchByBrand />,
-      modal: brandArray,
-      name: 'brand',
-    };
-    const { history } = rendering(elInfo);
+    const { history } = rendering(elBrandInfo);
     const heading = screen.getByRole('heading');
     fireEvent.click(heading);
     expect(history.length).toBe(2);
