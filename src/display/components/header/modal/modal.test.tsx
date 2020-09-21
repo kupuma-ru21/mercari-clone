@@ -2,6 +2,8 @@ import React from 'react';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { render, screen, fireEvent } from '@testing-library/react';
+import { categoryArray, brandArray } from '@/constans';
+import { ElInfo } from '@/types/modal';
 import { Modal, SearchByCategory, SearchByBrand } from '@/display/components';
 
 type RenderTypes = {
@@ -9,11 +11,12 @@ type RenderTypes = {
   directoryAtMouseOut: HTMLElement;
 };
 
-const rendering = (el: JSX.Element): RenderTypes => {
+const rendering = (elInfo: ElInfo): RenderTypes => {
   const history = createMemoryHistory();
+  const { el, modal } = elInfo;
   render(
     <Router history={history}>
-      <Modal el={el} />
+      <Modal elInfo={{ el, modal }} />
     </Router>
   );
   const heading = screen.getByRole('heading');
@@ -34,16 +37,14 @@ const expectResult = ({
 
 describe('Modal Components', () => {
   test('SearchByCategory check for the existence of a directory', () => {
-    const { directoryAtMouseOver, directoryAtMouseOut } = rendering(
-      <SearchByCategory />
-    );
+    const elInfo: ElInfo = { el: <SearchByCategory />, modal: categoryArray };
+    const { directoryAtMouseOver, directoryAtMouseOut } = rendering(elInfo);
     expectResult({ directoryAtMouseOver, directoryAtMouseOut });
   });
 
   test('SearchByBrand check for the existence of a directory', () => {
-    const { directoryAtMouseOver, directoryAtMouseOut } = rendering(
-      <SearchByBrand />
-    );
+    const elInfo: ElInfo = { el: <SearchByBrand />, modal: brandArray };
+    const { directoryAtMouseOver, directoryAtMouseOut } = rendering(elInfo);
     expectResult({ directoryAtMouseOver, directoryAtMouseOut });
   });
 });
