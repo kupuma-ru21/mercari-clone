@@ -7,7 +7,7 @@ const Modal: React.FC<Props> = ({ elInfo }: Props) => {
   const [displayFlg, setDisplayFlg] = useState(false);
   const onMouse = (): void => setDisplayFlg(!displayFlg);
   const { history } = useReactRouter();
-  const transaction = (): void => history.push('/category');
+  const transaction = (): void => history.push(`/${elInfo.name}`);
 
   return (
     <div>

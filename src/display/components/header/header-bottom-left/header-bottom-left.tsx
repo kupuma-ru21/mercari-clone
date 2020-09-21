@@ -5,8 +5,16 @@ import Styles from './header-bottom-left-style.scss';
 
 const HeaderBottomLeft: React.FC = () => (
   <div className={Styles.leftSide}>
-    <Modal elInfo={{ el: <SearchByCategory />, modal: categoryArray }} />
-    <Modal elInfo={{ el: <SearchByBrand />, modal: brandArray }} />
+    <Modal
+      elInfo={{
+        el: <SearchByCategory />,
+        modal: categoryArray,
+        name: 'category',
+      }}
+    />
+    <Modal
+      elInfo={{ el: <SearchByBrand />, modal: brandArray, name: 'brand' }}
+    />
   </div>
 );
 

@@ -12,10 +12,10 @@ type RenderTypes = {
 
 const rendering = (elInfo: ElInfo): RenderTypes => {
   const history = createMemoryHistory();
-  const { el, modal } = elInfo;
+  const { el, modal, name } = elInfo;
   render(
     <Router history={history}>
-      <Modal elInfo={{ el, modal }} />
+      <Modal elInfo={{ el, modal, name }} />
     </Router>
   );
   return { history };
@@ -28,7 +28,11 @@ const expectModalResult = ({ directoryAtMouseOver, directoryAtMouseOut }) => {
 
 describe('Modal Components', () => {
   test('SearchByCategory check for the existence of a directory', () => {
-    const elInfo: ElInfo = { el: <SearchByCategory />, modal: categoryArray };
+    const elInfo: ElInfo = {
+      el: <SearchByCategory />,
+      modal: categoryArray,
+      name: 'category',
+    };
     rendering(elInfo);
     const heading = screen.getByRole('heading');
     fireEvent.mouseOver(heading);
@@ -39,7 +43,11 @@ describe('Modal Components', () => {
   });
 
   test('SearchByBrand check for the existence of a directory', () => {
-    const elInfo: ElInfo = { el: <SearchByBrand />, modal: brandArray };
+    const elInfo: ElInfo = {
+      el: <SearchByBrand />,
+      modal: brandArray,
+      name: 'brand',
+    };
     rendering(elInfo);
     const heading = screen.getByRole('heading');
     fireEvent.mouseOver(heading);
@@ -50,7 +58,11 @@ describe('Modal Components', () => {
   });
 
   test('SearchByCategory click category page display', () => {
-    const elInfo: ElInfo = { el: <SearchByCategory />, modal: categoryArray };
+    const elInfo: ElInfo = {
+      el: <SearchByCategory />,
+      modal: categoryArray,
+      name: 'category',
+    };
     const { history } = rendering(elInfo);
     const heading = screen.getByRole('heading');
     fireEvent.click(heading);
