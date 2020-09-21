@@ -69,4 +69,17 @@ describe('Modal Components', () => {
     expect(history.length).toBe(2);
     expect(history.location.pathname).toBe('/category');
   });
+
+  test('SearchByBrand click category page display', () => {
+    const elInfo: ElInfo = {
+      el: <SearchByBrand />,
+      modal: brandArray,
+      name: 'brand',
+    };
+    const { history } = rendering(elInfo);
+    const heading = screen.getByRole('heading');
+    fireEvent.click(heading);
+    expect(history.length).toBe(2);
+    expect(history.location.pathname).toBe('/brand');
+  });
 });
