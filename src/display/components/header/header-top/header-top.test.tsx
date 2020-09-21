@@ -64,7 +64,7 @@ describe('Header Components', () => {
       fireEvent.click(logoIcon);
       const { pathname } = history.location;
       expect(history.length).toBe(2);
-      expect(`${pathname}`).toBe('/');
+      expect(pathname).toBe('/');
     });
   });
 });
