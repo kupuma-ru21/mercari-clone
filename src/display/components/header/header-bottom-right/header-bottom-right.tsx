@@ -11,6 +11,7 @@ const HeaderBottomRight: React.FC = () => {
   const loginMouseOut = (): void => setLoginVariant('outlined');
   const { history } = useReactRouter();
   const register = (): void => history.push('/signup');
+  const login = (): void => history.push('/login');
 
   return (
     <div className={Styles.rightSide}>
@@ -31,6 +32,7 @@ const HeaderBottomRight: React.FC = () => {
         size="small"
         onMouseOver={loginMouseOver}
         onMouseOut={loginMouseOut}
+        onClick={login}
       >
         ログイン
       </Button>
