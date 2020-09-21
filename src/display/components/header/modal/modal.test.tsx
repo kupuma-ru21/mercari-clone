@@ -21,17 +21,6 @@ const rendering = (elInfo: ElInfo): RenderTypes => {
   return { history };
 };
 
-const elCategoryInfo: ElInfo = {
-  el: <SearchByCategory />,
-  modal: categoryArray,
-  name: 'category',
-};
-const elBrandInfo: ElInfo = {
-  el: <SearchByBrand />,
-  modal: brandArray,
-  name: 'brand',
-};
-
 const mouseEvent = (elInfo) => {
   rendering(elInfo);
   const heading = screen.getByRole('heading');
@@ -52,18 +41,25 @@ const screenTransitionEvent = (elInfo, expectPath) => {
 };
 
 describe('Modal Components', () => {
+  const elCategoryInfo: ElInfo = {
+    el: <SearchByCategory />,
+    modal: categoryArray,
+    name: 'category',
+  };
+  const elBrandInfo: ElInfo = {
+    el: <SearchByBrand />,
+    modal: brandArray,
+    name: 'brand',
+  };
   test('SearchByCategory check for the existence of a directory', () => {
     mouseEvent(elCategoryInfo);
   });
-
   test('SearchByBrand check for the existence of a directory', () => {
     mouseEvent(elBrandInfo);
   });
-
   test('SearchByCategory click category page display', () => {
     screenTransitionEvent(elCategoryInfo, '/category');
   });
-
   test('SearchByBrand click category page display', () => {
     screenTransitionEvent(elBrandInfo, '/brand');
   });
