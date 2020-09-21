@@ -1,0 +1,6 @@
+@import '../header-bottom-left/header-bottom-left-style.scss';
+
+.categoryWrap {
+  @extend .commonClass;
+  padding-right: 10px;
+}

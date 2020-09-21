@@ -1,13 +1,5 @@
 .leftSide {
   display: flex;
-  .categoryWrap {
-    @extend .commonClass;
-    padding-right: 10px;
-  }
-  .brandWrap {
-    @extend .commonClass;
-    padding-left: 10px;
-  }
 }
 
 .commonClass {

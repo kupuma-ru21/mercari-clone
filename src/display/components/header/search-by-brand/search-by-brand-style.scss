@@ -1,0 +1,6 @@
+@import '../header-bottom-left/header-bottom-left-style.scss';
+
+.brandWrap {
+  @extend .commonClass;
+  padding-left: 10px;
+}
