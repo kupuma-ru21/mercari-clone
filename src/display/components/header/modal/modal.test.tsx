@@ -6,12 +6,7 @@ import { categoryArray, brandArray } from '@/constans';
 import { ElInfo } from '@/types/modal';
 import { Modal, SearchByCategory, SearchByBrand } from '@/display/components';
 
-type RenderTypes = {
-  directoryAtMouseOver: HTMLElement;
-  directoryAtMouseOut: HTMLElement;
-};
-
-const rendering = (elInfo: ElInfo): RenderTypes => {
+const rendering = (elInfo: ElInfo) => {
   const history = createMemoryHistory();
   const { el, modal } = elInfo;
   render(
@@ -19,18 +14,9 @@ const rendering = (elInfo: ElInfo): RenderTypes => {
       <Modal elInfo={{ el, modal }} />
     </Router>
   );
-  const heading = screen.getByRole('heading');
-  fireEvent.mouseOver(heading);
-  const directoryAtMouseOver = screen.getByRole('directory');
-  fireEvent.mouseOut(heading);
-  const directoryAtMouseOut = screen.getByRole('directory');
-  return { directoryAtMouseOver, directoryAtMouseOut };
 };
 
-const expectResult = ({
-  directoryAtMouseOver,
-  directoryAtMouseOut,
-}: RenderTypes) => {
+const expectModalResult = ({ directoryAtMouseOver, directoryAtMouseOut }) => {
   expect(directoryAtMouseOver).toBeInTheDocument();
   expect(directoryAtMouseOut).toBeEmptyDOMElement();
 };
@@ -38,13 +24,23 @@ const expectResult = ({
 describe('Modal Components', () => {
   test('SearchByCategory check for the existence of a directory', () => {
     const elInfo: ElInfo = { el: <SearchByCategory />, modal: categoryArray };
-    const { directoryAtMouseOver, directoryAtMouseOut } = rendering(elInfo);
-    expectResult({ directoryAtMouseOver, directoryAtMouseOut });
+    rendering(elInfo);
+    const heading = screen.getByRole('heading');
+    fireEvent.mouseOver(heading);
+    const directoryAtMouseOver = screen.getByRole('directory');
+    fireEvent.mouseOut(heading);
+    const directoryAtMouseOut = screen.getByRole('directory');
+    expectModalResult({ directoryAtMouseOver, directoryAtMouseOut });
   });
 
   test('SearchByBrand check for the existence of a directory', () => {
     const elInfo: ElInfo = { el: <SearchByBrand />, modal: brandArray };
-    const { directoryAtMouseOver, directoryAtMouseOut } = rendering(elInfo);
-    expectResult({ directoryAtMouseOver, directoryAtMouseOut });
+    rendering(elInfo);
+    const heading = screen.getByRole('heading');
+    fireEvent.mouseOver(heading);
+    const directoryAtMouseOver = screen.getByRole('directory');
+    fireEvent.mouseOut(heading);
+    const directoryAtMouseOut = screen.getByRole('directory');
+    expectModalResult({ directoryAtMouseOver, directoryAtMouseOut });
   });
 });
