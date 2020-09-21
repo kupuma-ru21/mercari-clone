@@ -1,24 +1,20 @@
 import React, { useState } from 'react';
-import { categoryArray } from '@/constans';
+import { Props } from '@/types/modal';
 import Styles from './modal-style.scss';
 
-type Props = {
-  el: JSX.Element;
-};
-
-const Modal: React.FC<Props> = ({ el }: Props) => {
+const Modal: React.FC<Props> = ({ elInfo }: Props) => {
   const [displayFlg, setDisplayFlg] = useState(false);
   const onMouse = (): void => setDisplayFlg(!displayFlg);
 
   return (
     <div>
       <div role="heading" onMouseOver={onMouse} onMouseOut={onMouse}>
-        {el}
+        {elInfo.el}
       </div>
       <div role="directory">
         {displayFlg && (
           <>
-            {categoryArray.map((val: any) => (
+            {elInfo.modal.map((val: any) => (
               <li className={Styles.list} key={val.id}>
                 {val.text}
               </li>

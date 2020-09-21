@@ -14,3 +14,12 @@ export const categoryArray = [
   { id: 13, text: 'その他' },
   { id: 14, text: 'カテゴリー 一覧' },
 ];
+
+export const brandArray = [
+  { id: 1, text: 'シャネル' },
+  { id: 2, text: 'ナイキ' },
+  { id: 3, text: 'ルイ ヴィトン' },
+  { id: 4, text: 'シュプリーム' },
+  { id: 5, text: 'アディダス' },
+  { id: 6, text: 'ブランド一覧' },
+];
