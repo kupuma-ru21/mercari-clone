@@ -2,24 +2,20 @@ import React, { useState } from 'react';
 import useReactRouter from 'use-react-router';
 import { Props } from '@/types/modal';
 import { ModalList } from '@/display/components';
+import Styles from './modal-style.scss';
 
 const Modal: React.FC<Props> = ({ elInfo }: Props) => {
-  const [displayFlg, setDisplayFlg] = useState(false);
-  const onMouse = (): void => setDisplayFlg(!displayFlg);
   const { history } = useReactRouter();
   const transaction = (): void => history.push(`/${elInfo.name}`);
 
   return (
-    <div>
-      <div
-        role="heading"
-        onMouseOver={onMouse}
-        onMouseOut={onMouse}
-        onClick={transaction}
-      >
+    <div className={Styles.modalWrap}>
+      <div role="heading" onClick={transaction}>
         {elInfo.el}
       </div>
-      <ul>{displayFlg && <ModalList list={elInfo.modal} />}</ul>
+      <ul>
+        <ModalList list={elInfo.modal} />
+      </ul>
     </div>
   );
 };

@@ -21,17 +21,6 @@ const rendering = (elInfo: ElInfo): RenderTypes => {
   return { history };
 };
 
-const mouseEvent = (elInfo: ElInfo) => {
-  rendering(elInfo);
-  const heading = screen.getByRole('heading');
-  fireEvent.mouseOver(heading);
-  const directoryAtMouseOver = screen.getByRole('list');
-  fireEvent.mouseOut(heading);
-  const directoryAtMouseOut = screen.getByRole('list');
-  expect(directoryAtMouseOver).toBeInTheDocument();
-  expect(directoryAtMouseOut).toBeEmptyDOMElement();
-};
-
 const screenTransitionEvent = (elInfo: ElInfo, expectPath: string) => {
   const { history } = rendering(elInfo);
   const heading = screen.getByRole('heading');
@@ -51,12 +40,6 @@ describe('Modal Components', () => {
     modal: brandArray,
     name: 'brand',
   };
-  test('SearchByCategory check for the existence of a directory', () => {
-    mouseEvent(elCategoryInfo);
-  });
-  test('SearchByBrand check for the existence of a directory', () => {
-    mouseEvent(elBrandInfo);
-  });
   test('SearchByCategory click category page display', () => {
     screenTransitionEvent(elCategoryInfo, '/category');
   });

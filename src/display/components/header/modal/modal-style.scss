@@ -1,0 +1,14 @@
+.modalWrap {
+  position: relative;
+  ul {
+    display: none;
+  }
+  &:hover {
+    ul {
+      display: block;
+      margin: 0;
+      padding: 0;
+      z-index: 1;
+    }
+  }
+}
