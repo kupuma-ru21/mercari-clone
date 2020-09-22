@@ -19,9 +19,7 @@ const Modal: React.FC<Props> = ({ elInfo }: Props) => {
       >
         {elInfo.el}
       </div>
-      <div role="directory">
-        {displayFlg && <ModalList list={elInfo.modal} />}
-      </div>
+      <ul>{displayFlg && <ModalList list={elInfo.modal} />}</ul>
     </div>
   );
 };

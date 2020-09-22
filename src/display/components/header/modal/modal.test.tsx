@@ -25,9 +25,9 @@ const mouseEvent = (elInfo: ElInfo) => {
   rendering(elInfo);
   const heading = screen.getByRole('heading');
   fireEvent.mouseOver(heading);
-  const directoryAtMouseOver = screen.getByRole('directory');
+  const directoryAtMouseOver = screen.getByRole('list');
   fireEvent.mouseOut(heading);
-  const directoryAtMouseOut = screen.getByRole('directory');
+  const directoryAtMouseOut = screen.getByRole('list');
   expect(directoryAtMouseOver).toBeInTheDocument();
   expect(directoryAtMouseOut).toBeEmptyDOMElement();
 };
