@@ -8,9 +8,9 @@ type Props = {
 
 const ModalList: React.FC<Props> = ({ list }) => {
   return (
-    <ul>
+    <ul className={Styles.list}>
       {list.map((item: ModalContent) => (
-        <li className={Styles.list} key={item.id}>
+        <li className={Styles.listItem} key={item.id}>
           {item.text}
         </li>
       ))}
