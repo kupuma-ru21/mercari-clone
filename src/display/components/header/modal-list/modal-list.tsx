@@ -1,21 +1,13 @@
 import React from 'react';
-import { Modal, ModalContent } from '@/types/modal';
+import { ModalContent } from '@/types/modal';
 import Styles from './modal-list-style.scss';
 
 type Props = {
-  list: Modal;
+  item: ModalContent;
 };
 
-const ModalList: React.FC<Props> = ({ list }) => {
-  return (
-    <>
-      {list.map((item: ModalContent) => (
-        <li className={Styles.listItem} key={item.id}>
-          {item.text}
-        </li>
-      ))}
-    </>
-  );
-};
+const ModalList: React.FC<Props> = ({ item }) => (
+  <li className={Styles.listItem}>{item.text}</li>
+);
 
 export default ModalList;

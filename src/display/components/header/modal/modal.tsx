@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useReactRouter from 'use-react-router';
-import { Props } from '@/types/modal';
+import { Props, ModalContent } from '@/types/modal';
 import { ModalList } from '@/display/components';
 import Styles from './modal-style.scss';
 
@@ -14,7 +14,9 @@ const Modal: React.FC<Props> = ({ elInfo }: Props) => {
         {elInfo.el}
       </div>
       <ul>
-        <ModalList list={elInfo.modal} />
+        {elInfo.modal.map((item: ModalContent) => (
+          <ModalList item={item} key={item.id} />
+        ))}
       </ul>
     </div>
   );
