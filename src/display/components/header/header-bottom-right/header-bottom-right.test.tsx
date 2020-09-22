@@ -19,7 +19,6 @@ const rendering = (): RenderTypes => {
 };
 
 const transitionResult = (history: MemoryHistory, expectPath: string) => {
-  expect(history.length).toBe(2);
   expect(history.location.pathname).toBe(expectPath);
 };
 

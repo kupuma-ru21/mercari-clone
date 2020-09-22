@@ -34,7 +34,6 @@ const renderingOtherThanHome = () => {
 
 const transitionResult = ({ history, searchWord }: RenderTypes) => {
   const { pathname, search } = history.location;
-  expect(history.length).toBe(2);
   expect(`${pathname}${search}${searchWord}`).toBe(
     `/search?keyword=${searchWord}`
   );
@@ -63,7 +62,6 @@ describe('Header Components', () => {
       const logoIcon = screen.getByAltText(alt);
       fireEvent.click(logoIcon);
       const { pathname } = history.location;
-      expect(history.length).toBe(2);
       expect(pathname).toBe('/');
     });
   });

@@ -25,7 +25,6 @@ const screenTransitionEvent = (elInfo: ElInfo, expectPath: string) => {
   const { history } = rendering(elInfo);
   const heading = screen.getByRole('heading');
   fireEvent.click(heading);
-  expect(history.length).toBe(2);
   expect(history.location.pathname).toBe(expectPath);
 };
 
