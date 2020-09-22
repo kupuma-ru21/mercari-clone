@@ -10,7 +10,7 @@ const Modal: React.FC<Props> = ({ elInfo }: Props) => {
 
   return (
     <div className={Styles.modalWrap}>
-      <div role="heading" onClick={transaction}>
+      <div role="heading" className={Styles.head} onClick={transaction}>
         {elInfo.el}
       </div>
       <ul>
