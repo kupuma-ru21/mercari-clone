@@ -8,13 +8,13 @@ type Props = {
 
 const ModalList: React.FC<Props> = ({ list }) => {
   return (
-    <>
+    <ul>
       {list.map((item: ModalContent) => (
         <li className={Styles.list} key={item.id}>
           {item.text}
         </li>
       ))}
-    </>
+    </ul>
   );
 };
 
