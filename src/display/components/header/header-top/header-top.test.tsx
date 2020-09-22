@@ -32,7 +32,7 @@ const renderingOtherThanHome = () => {
   return { history };
 };
 
-const transitionResult = ({ history, searchWord }: RenderTypes) => {
+const transitionResult = ({ history, searchWord }: RenderTypes): void => {
   const { pathname, search } = history.location;
   expect(`${pathname}${search}${searchWord}`).toBe(
     `/search?keyword=${searchWord}`

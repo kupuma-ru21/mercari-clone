@@ -18,7 +18,7 @@ const rendering = (): RenderTypes => {
   return { history };
 };
 
-const transitionResult = (history: MemoryHistory, expectPath: string) => {
+const transitionResult = (history: MemoryHistory, expectPath: string): void => {
   expect(history.location.pathname).toBe(expectPath);
 };
 

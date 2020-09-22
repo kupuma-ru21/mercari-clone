@@ -21,7 +21,7 @@ const rendering = (elInfo: ElInfo): RenderTypes => {
   return { history };
 };
 
-const screenTransitionEvent = (elInfo: ElInfo, expectPath: string) => {
+const screenTransitionEvent = (elInfo: ElInfo, expectPath: string): void => {
   const { history } = rendering(elInfo);
   const heading = screen.getByRole('heading');
   fireEvent.click(heading);
@@ -48,7 +48,7 @@ describe('Modal Components', () => {
   test('listItem click category/itemID page display', () => {
     const { history } = rendering(elCategoryInfo);
     const list = screen.getAllByRole('listitem');
-    categoryArray.forEach((val: ModalContent, index: number) => {
+    categoryArray.forEach((val: ModalContent, index: number): void => {
       fireEvent.click(list[index]);
       expect(history.location.pathname).toBe(`/category/${val.id}`);
     });
