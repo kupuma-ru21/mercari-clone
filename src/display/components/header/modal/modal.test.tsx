@@ -3,7 +3,7 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory, MemoryHistory } from 'history';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { categoryArray, brandArray } from '@/constans';
-import { ElInfo } from '@/types/modal';
+import { ElInfo, ModalContent } from '@/types/modal';
 import { Modal, SearchByCategory, SearchByBrand } from '@/display/components';
 
 type RenderTypes = {
@@ -45,5 +45,15 @@ describe('Modal Components', () => {
   });
   test('SearchByBrand click category page display', () => {
     screenTransitionEvent(elBrandInfo, '/brand');
+  });
+  test('listItem click category/itemID page display', () => {
+    const { history } = rendering(elCategoryInfo);
+    const list = screen.getAllByRole('listitem');
+    fireEvent.click(list[1]);
+    const targetItem = categoryArray.find(
+      (val: ModalContent) => val.text === list[1].textContent
+    );
+    expect(history.length).toBe(2);
+    expect(history.location.pathname).toBe(`/category/${targetItem.id}`);
   });
 });

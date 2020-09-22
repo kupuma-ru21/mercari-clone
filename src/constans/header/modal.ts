@@ -1,7 +1,9 @@
-export const categoryArray = [
+import { Modal } from '@/types/modal';
+
+export const categoryArray: Modal = [
   { id: 1, text: 'レディース' },
   { id: 2, text: 'メンズ' },
-  { id: 3, text: 'ベビー・キッズ' },
+  { id: 3, text: 'ベビー・キッズ' },
   { id: 4, text: 'インテリア・住まい・小物' },
   { id: 5, text: '本・音楽・ゲーム' },
   { id: 6, text: 'おもちゃ・ホビー・グッズ' },
@@ -15,7 +17,7 @@ export const categoryArray = [
   { id: 14, text: 'カテゴリー 一覧' },
 ];
 
-export const brandArray = [
+export const brandArray: Modal = [
   { id: 1, text: 'シャネル' },
   { id: 2, text: 'ナイキ' },
   { id: 3, text: 'ルイ ヴィトン' },
