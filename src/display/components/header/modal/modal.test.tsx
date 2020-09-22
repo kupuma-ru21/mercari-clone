@@ -49,11 +49,9 @@ describe('Modal Components', () => {
   test('listItem click category/itemID page display', () => {
     const { history } = rendering(elCategoryInfo);
     const list = screen.getAllByRole('listitem');
-    fireEvent.click(list[1]);
-    const targetItem = categoryArray.find(
-      (val: ModalContent) => val.text === list[1].textContent
-    );
-    expect(history.length).toBe(2);
-    expect(history.location.pathname).toBe(`/category/${targetItem.id}`);
+    categoryArray.forEach((val: ModalContent, index: number) => {
+      fireEvent.click(list[index]);
+      expect(history.location.pathname).toBe(`/category/${val.id}`);
+    });
   });
 });
