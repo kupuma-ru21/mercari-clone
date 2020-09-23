@@ -3,11 +3,11 @@ export type ModalContent = {
   text: string;
 };
 
-export type Modal = ModalContent[];
+export type ModalList = ModalContent[];
 
 export type ElInfo = {
   el: JSX.Element;
-  modal: Modal;
+  modal: ModalList;
   name: string;
 };
 

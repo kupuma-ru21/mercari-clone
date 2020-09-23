@@ -1,6 +1,6 @@
-import { Modal } from '@/types/modal';
+import { ModalList } from '@/types/modal';
 
-export const categoryArray: Modal = [
+export const categoryArray: ModalList = [
   { id: 1, text: 'レディース' },
   { id: 2, text: 'メンズ' },
   { id: 3, text: 'ベビー・キッズ' },
@@ -17,7 +17,7 @@ export const categoryArray: Modal = [
   { id: 14, text: 'カテゴリー 一覧' },
 ];
 
-export const brandArray: Modal = [
+export const brandArray: ModalList = [
   { id: 1, text: 'シャネル' },
   { id: 2, text: 'ナイキ' },
   { id: 3, text: 'ルイ ヴィトン' },
