@@ -21,7 +21,7 @@ const rendering = (elInfo: ElInfo): RenderTypes => {
   return { history };
 };
 
-const screenTransitionEvent = (elInfo: ElInfo): void => {
+const categoryClickTest = (elInfo: ElInfo): void => {
   const { name } = elInfo;
   const { history } = rendering(elInfo);
   const heading = screen.getByRole('heading');
@@ -29,7 +29,7 @@ const screenTransitionEvent = (elInfo: ElInfo): void => {
   expect(history.location.pathname).toBe(`/${name}`);
 };
 
-const listItemClickEvent = (elInfo: ElInfo): void => {
+const listItemClickTest = (elInfo: ElInfo): void => {
   const { name, modalList } = elInfo;
   const { history } = rendering(elInfo);
   const list = screen.getAllByRole('listitem');
@@ -50,16 +50,16 @@ describe('Modal Components', () => {
     modalList: brandArray,
     name: 'brand',
   };
-  test('SearchByCategory click category page display', () => {
-    screenTransitionEvent(elCategoryInfo);
+  test('searchByCategory click category page display', () => {
+    categoryClickTest(elCategoryInfo);
   });
-  test('SearchByBrand click category page display', () => {
-    screenTransitionEvent(elBrandInfo);
+  test('searchByBrand click category page display', () => {
+    categoryClickTest(elBrandInfo);
   });
   test('listItem click category/itemID page display', () => {
-    listItemClickEvent(elCategoryInfo);
+    listItemClickTest(elCategoryInfo);
   });
   test('listItem click brand/itemID page display', () => {
-    listItemClickEvent(elBrandInfo);
+    listItemClickTest(elBrandInfo);
   });
 });
