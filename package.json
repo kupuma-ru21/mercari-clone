@@ -11,8 +11,8 @@
     "test:staged": "yarn test --findRelatedTests",
     "test:ci": "yarn test --coverage",
     "check": "yarn-check -u -s",
-    "lint:check": "./node_modules/.bin/eslint src/**",
-    "lint:fix": "./node_modules/.bin/eslint src/** --fix"
+    "lint:check": "eslint 'src/**'",
+    "lint:fix": "eslint 'src/**' --fix"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.4",
