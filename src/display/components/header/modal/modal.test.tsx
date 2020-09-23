@@ -59,7 +59,7 @@ describe('Modal Components', () => {
     const list = screen.getAllByRole('listitem');
     brandArray.forEach((val: ModalContent, index: number): void => {
       fireEvent.click(list[index]);
-      expect(history.location.pathname).toBe(`/category/${val.id}`);
+      expect(history.location.pathname).toBe(`/brand/${val.id}`);
     });
   });
 });

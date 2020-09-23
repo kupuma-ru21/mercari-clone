@@ -15,7 +15,7 @@ const Modal: React.FC<Props> = ({ elInfo }: Props) => {
       </div>
       <ul>
         {elInfo.modalList.map((item: ModalContent) => (
-          <ModalList item={item} key={item.id} />
+          <ModalList itemInfo={{ item, elInfo }} key={item.id} />
         ))}
       </ul>
     </div>
