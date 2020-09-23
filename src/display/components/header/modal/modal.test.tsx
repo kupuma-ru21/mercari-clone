@@ -12,10 +12,10 @@ type RenderTypes = {
 
 const rendering = (elInfo: ElInfo): RenderTypes => {
   const history = createMemoryHistory();
-  const { el, modal, name } = elInfo;
+  const { el, modalList, name } = elInfo;
   render(
     <Router history={history}>
-      <Modal elInfo={{ el, modal, name }} />
+      <Modal elInfo={{ el, modalList, name }} />
     </Router>
   );
   return { history };
@@ -31,12 +31,12 @@ const screenTransitionEvent = (elInfo: ElInfo, expectPath: string): void => {
 describe('Modal Components', () => {
   const elCategoryInfo: ElInfo = {
     el: <SearchByCategory />,
-    modal: categoryArray,
+    modalList: categoryArray,
     name: 'category',
   };
   const elBrandInfo: ElInfo = {
     el: <SearchByBrand />,
-    modal: brandArray,
+    modalList: brandArray,
     name: 'brand',
   };
   test('SearchByCategory click category page display', () => {

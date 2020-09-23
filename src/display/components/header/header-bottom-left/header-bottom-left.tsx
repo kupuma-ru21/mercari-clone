@@ -8,12 +8,12 @@ const HeaderBottomLeft: React.FC = () => (
     <Modal
       elInfo={{
         el: <SearchByCategory />,
-        modal: categoryArray,
+        modalList: categoryArray,
         name: 'category',
       }}
     />
     <Modal
-      elInfo={{ el: <SearchByBrand />, modal: brandArray, name: 'brand' }}
+      elInfo={{ el: <SearchByBrand />, modalList: brandArray, name: 'brand' }}
     />
   </div>
 );

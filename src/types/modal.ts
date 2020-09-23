@@ -7,7 +7,7 @@ export type ModalList = ModalContent[];
 
 export type ElInfo = {
   el: JSX.Element;
-  modal: ModalList;
+  modalList: ModalList;
   name: string;
 };
 
