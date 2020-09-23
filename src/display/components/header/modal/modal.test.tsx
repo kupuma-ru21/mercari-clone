@@ -21,11 +21,12 @@ const rendering = (elInfo: ElInfo): RenderTypes => {
   return { history };
 };
 
-const screenTransitionEvent = (elInfo: ElInfo, expectPath: string): void => {
+const screenTransitionEvent = (elInfo: ElInfo): void => {
+  const { name } = elInfo;
   const { history } = rendering(elInfo);
   const heading = screen.getByRole('heading');
   fireEvent.click(heading);
-  expect(history.location.pathname).toBe(expectPath);
+  expect(history.location.pathname).toBe(`/${name}`);
 };
 
 describe('Modal Components', () => {
@@ -40,10 +41,10 @@ describe('Modal Components', () => {
     name: 'brand',
   };
   test('SearchByCategory click category page display', () => {
-    screenTransitionEvent(elCategoryInfo, '/category');
+    screenTransitionEvent(elCategoryInfo);
   });
   test('SearchByBrand click category page display', () => {
-    screenTransitionEvent(elBrandInfo, '/brand');
+    screenTransitionEvent(elBrandInfo);
   });
   test('listItem click category/itemID page display', () => {
     const { history } = rendering(elCategoryInfo);
