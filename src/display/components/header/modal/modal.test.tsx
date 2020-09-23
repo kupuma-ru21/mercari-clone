@@ -53,4 +53,12 @@ describe('Modal Components', () => {
       expect(history.location.pathname).toBe(`/category/${val.id}`);
     });
   });
+  test('listItem click brand/itemID page display', () => {
+    const { history } = rendering(elBrandInfo);
+    const list = screen.getAllByRole('listitem');
+    brandArray.forEach((val: ModalContent, index: number): void => {
+      fireEvent.click(list[index]);
+      expect(history.location.pathname).toBe(`/category/${val.id}`);
+    });
+  });
 });
