@@ -29,6 +29,16 @@ const screenTransitionEvent = (elInfo: ElInfo): void => {
   expect(history.location.pathname).toBe(`/${name}`);
 };
 
+const listItemClickEvent = (elInfo: ElInfo): void => {
+  const { name, modalList } = elInfo;
+  const { history } = rendering(elInfo);
+  const list = screen.getAllByRole('listitem');
+  modalList.forEach((val: ModalContent, index: number): void => {
+    fireEvent.click(list[index]);
+    expect(history.location.pathname).toBe(`/${name}/${val.id}`);
+  });
+};
+
 describe('Modal Components', () => {
   const elCategoryInfo: ElInfo = {
     el: <SearchByCategory />,
@@ -47,19 +57,9 @@ describe('Modal Components', () => {
     screenTransitionEvent(elBrandInfo);
   });
   test('listItem click category/itemID page display', () => {
-    const { history } = rendering(elCategoryInfo);
-    const list = screen.getAllByRole('listitem');
-    categoryArray.forEach((val: ModalContent, index: number): void => {
-      fireEvent.click(list[index]);
-      expect(history.location.pathname).toBe(`/category/${val.id}`);
-    });
+    listItemClickEvent(elCategoryInfo);
   });
   test('listItem click brand/itemID page display', () => {
-    const { history } = rendering(elBrandInfo);
-    const list = screen.getAllByRole('listitem');
-    brandArray.forEach((val: ModalContent, index: number): void => {
-      fireEvent.click(list[index]);
-      expect(history.location.pathname).toBe(`/brand/${val.id}`);
-    });
+    listItemClickEvent(elBrandInfo);
   });
 });
