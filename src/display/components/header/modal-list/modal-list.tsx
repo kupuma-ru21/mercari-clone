@@ -13,7 +13,13 @@ type Props = {
 const ModalList: React.FC<Props> = ({ itemInfo }) => {
   const { item, elInfo } = itemInfo;
   const { history } = useReactRouter();
-  const transaction = (): void => history.push(`/${elInfo.name}/${item.id}`);
+  const transaction = (): void => {
+    if (item.text === 'カテゴリー 一覧') {
+      history.push(`/${elInfo.name}`);
+      return;
+    }
+    history.push(`/${elInfo.name}/${item.id}`);
+  };
   return (
     <li className={Styles.listItem} onClick={transaction}>
       {item.text}
