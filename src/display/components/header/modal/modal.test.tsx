@@ -35,7 +35,10 @@ const listItemClickTest = (elInfo: ElInfo): void => {
   const list = screen.getAllByRole('listitem');
   modalList.forEach((val: ModalContent, index: number): void => {
     fireEvent.click(list[index]);
-    if (list[index].textContent === 'カテゴリー 一覧') {
+    if (
+      list[index].textContent === 'カテゴリー 一覧' ||
+      list[index].textContent === 'ブランド一覧'
+    ) {
       expect(history.location.pathname).toBe(`/${name}`);
       return;
     }

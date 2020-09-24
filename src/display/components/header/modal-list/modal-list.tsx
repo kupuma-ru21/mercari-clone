@@ -14,7 +14,7 @@ const ModalList: React.FC<Props> = ({ itemInfo }) => {
   const { item, elInfo } = itemInfo;
   const { history } = useReactRouter();
   const transaction = (): void => {
-    if (item.text === 'カテゴリー 一覧') {
+    if (item.text === 'カテゴリー 一覧' || item.text === 'ブランド一覧') {
       history.push(`/${elInfo.name}`);
       return;
     }
