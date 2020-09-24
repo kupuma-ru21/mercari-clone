@@ -2,7 +2,7 @@ import React, { useState, memo } from 'react';
 import useReactRouter from 'use-react-router';
 import { TextField } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import { src, alt, placeholder } from '@/constans';
+import { src, alt, placeholder } from '@/constans/header';
 import Styles from './header-top-style.scss';
 
 const HeaderTop: React.FC = () => {

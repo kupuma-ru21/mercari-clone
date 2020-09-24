@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { categoryArray, brandArray } from '@/constans';
+import { categoryArray, brandArray } from '@/constans/header';
 import { Modal, SearchByCategory, SearchByBrand } from '@/display/components';
 import Styles from './header-bottom-left-style.scss';
 
