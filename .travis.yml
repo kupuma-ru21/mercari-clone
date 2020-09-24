@@ -4,3 +4,4 @@ node_js:
 script:
   - yarn lint:check
   - yarn test:ci
+  - yarn test:coveralls
