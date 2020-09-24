@@ -4,6 +4,7 @@ import { createMemoryHistory, MemoryHistory } from 'history';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { categoryArray, brandArray } from '@/constans/header';
 import { ElInfo, ModalContent } from '@/types/modal';
+import { textCheck } from '@/logic/modal-list-logic';
 import { Modal, SearchByCategory, SearchByBrand } from '@/display/components';
 
 type RenderTypes = {
@@ -35,10 +36,7 @@ const listItemClickTest = (elInfo: ElInfo): void => {
   const list = screen.getAllByRole('listitem');
   modalList.forEach((val: ModalContent, index: number): void => {
     fireEvent.click(list[index]);
-    if (
-      list[index].textContent === 'カテゴリー 一覧' ||
-      list[index].textContent === 'ブランド一覧'
-    ) {
+    if (textCheck(list[index].textContent)) {
       expect(history.location.pathname).toBe(`/${name}`);
       return;
     }
