@@ -21,6 +21,16 @@ const rendering = (elInfo: ElInfo): RenderTypes => {
   return { history };
 };
 
+const headingBackColorSwitchTest = (elInfo: ElInfo): void => {
+  rendering(elInfo);
+  const heading = screen.getByRole('heading');
+  expect(heading).not.toHaveClass('head');
+  fireEvent.mouseEnter(heading);
+  expect(heading).toHaveClass('head');
+  fireEvent.mouseLeave(heading);
+  expect(heading).not.toHaveClass('head');
+};
+
 const categoryClickTest = (elInfo: ElInfo): void => {
   const { name } = elInfo;
   const { history } = rendering(elInfo);
@@ -52,6 +62,12 @@ describe('Modal Components', () => {
     modalList: brandArray,
     name: 'brand',
   };
+  test('headingCategory background color switching test', () => {
+    headingBackColorSwitchTest(elCategoryInfo);
+  });
+  test('headingBrand background color switching test', () => {
+    headingBackColorSwitchTest(elBrandInfo);
+  });
   test('modalCategoryList display control check', () => {
     modalListDisplayControlCheck(elCategoryInfo);
   });
