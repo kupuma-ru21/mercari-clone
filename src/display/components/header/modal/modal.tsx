@@ -5,6 +5,10 @@ import { ModalList } from '@/display/components';
 import Styles from './modal-style.scss';
 
 const Modal: React.FC<Props> = ({ elInfo }: Props) => {
+  const [className, setClassName] = useState('');
+  const addBackgroundColor = (): void => setClassName(Styles.head);
+  const removeBackgroundColor = (): void => setClassName('');
+
   const [displayFlg, setDisplayFlg] = useState(false);
   const { history } = useReactRouter();
   const transaction = (): void => history.push(`/${elInfo.name}`);
@@ -17,7 +21,13 @@ const Modal: React.FC<Props> = ({ elInfo }: Props) => {
       onMouseEnter={modalDisplayControl}
       onMouseLeave={modalDisplayControl}
     >
-      <div role="heading" className={Styles.head} onClick={transaction}>
+      <div
+        role="heading"
+        className={className}
+        onMouseEnter={addBackgroundColor}
+        onMouseLeave={removeBackgroundColor}
+        onClick={transaction}
+      >
         {elInfo.el}
       </div>
       <ul>

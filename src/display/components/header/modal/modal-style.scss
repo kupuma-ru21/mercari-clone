@@ -1,7 +1,8 @@
 .modalWrap {
-  &:hover {
-    .head {
-      color: #004daa;
-    }
+  .head {
+    color: #004daa;
+  }
+  ul {
+    padding: 0;
   }
 }
