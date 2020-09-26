@@ -1,15 +1,7 @@
 .modalWrap {
-  ul {
-    display: none;
-  }
   &:hover {
     .head {
       color: #004daa;
-    }
-    ul {
-      display: block;
-      margin: 0;
-      padding: 0;
     }
   }
 }
