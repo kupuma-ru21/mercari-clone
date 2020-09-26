@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useReactRouter from 'use-react-router';
 import { ElInfo, ModalContent } from '@/types/modal';
 import { textCheck } from '@/logic/modal-list-logic';
@@ -12,6 +12,12 @@ type Props = {
 };
 
 const ModalList: React.FC<Props> = ({ itemInfo }) => {
+  const [className, setClassName] = useState(Styles.listItem);
+  const addBackgroundColor = (): void => {
+    setClassName([Styles.listItem, Styles.hoverListItem].join(' '));
+  };
+  const removeBackgroundColor = (): void => setClassName(Styles.listItem);
+
   const { item, elInfo } = itemInfo;
   const { history } = useReactRouter();
   const transaction = (): void => {
@@ -23,7 +29,12 @@ const ModalList: React.FC<Props> = ({ itemInfo }) => {
   };
 
   return (
-    <li className={Styles.listItem} onClick={transaction}>
+    <li
+      className={className}
+      onMouseEnter={addBackgroundColor}
+      onMouseLeave={removeBackgroundColor}
+      onClick={transaction}
+    >
       {item.text}
     </li>
   );
