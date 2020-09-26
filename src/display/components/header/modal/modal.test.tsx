@@ -3,8 +3,7 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory, MemoryHistory } from 'history';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { categoryArray, brandArray } from '@/constans/header';
-import { ElInfo, ModalContent } from '@/types/modal';
-import { textCheck } from '@/logic/modal-list-logic';
+import { ElInfo } from '@/types/modal';
 import { Modal, SearchByCategory, SearchByBrand } from '@/display/components';
 
 type RenderTypes = {
@@ -42,23 +41,6 @@ const modalListDisplayControlCheck = (elInfo: ElInfo): void => {
   expect(list.childElementCount).toBe(0);
 };
 
-const listItemClickTest = (elInfo: ElInfo): void => {
-  const { history } = rendering(elInfo);
-  const directory = screen.getByRole('directory');
-  fireEvent.mouseEnter(directory);
-
-  const list = screen.getAllByRole('listitem');
-  const { name, modalList } = elInfo;
-  modalList.forEach((val: ModalContent, index: number): void => {
-    fireEvent.click(list[index]);
-    if (textCheck(list[index].textContent)) {
-      expect(history.location.pathname).toBe(`/${name}`);
-      return;
-    }
-    expect(history.location.pathname).toBe(`/${name}/${val.id}`);
-  });
-};
-
 describe('Modal Components', () => {
   const elCategoryInfo: ElInfo = {
     el: <SearchByCategory />,
@@ -81,11 +63,5 @@ describe('Modal Components', () => {
   });
   test('searchByBrand click category page display', () => {
     categoryClickTest(elBrandInfo);
-  });
-  test('listItem click category/itemID page display', () => {
-    listItemClickTest(elCategoryInfo);
-  });
-  test('listItem click brand/itemID page display', () => {
-    listItemClickTest(elBrandInfo);
   });
 });
