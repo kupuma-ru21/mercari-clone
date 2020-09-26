@@ -66,6 +66,17 @@ describe('Modal Components', () => {
     fireEvent.mouseLeave(directory);
     expect(list.childElementCount).toBe(0);
   });
+  test('modalBrandList display control check', () => {
+    rendering(elBrandInfo);
+    const list = screen.getByRole('list');
+    expect(list.childElementCount).toBe(0);
+
+    const directory = screen.getByRole('directory');
+    fireEvent.mouseEnter(directory);
+    expect(list.childElementCount).not.toBe(0);
+    fireEvent.mouseLeave(directory);
+    expect(list.childElementCount).toBe(0);
+  });
   test('searchByCategory click category page display', () => {
     categoryClickTest(elCategoryInfo);
   });
