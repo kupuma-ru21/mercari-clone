@@ -67,4 +67,15 @@ describe('ModalList Components', () => {
       expect(list[index]).not.toHaveClass('hoverListItem');
     });
   });
+  test('brandListItem background color switching test', () => {
+    brandArray.forEach((item: ModalContent, index: number) => {
+      rendering({ item, elBrandInfo });
+      const list = screen.getAllByRole('listitem');
+      expect(list[index]).not.toHaveClass('hoverListItem');
+      fireEvent.mouseEnter(list[index]);
+      expect(list[index]).toHaveClass('hoverListItem');
+      fireEvent.mouseLeave(list[index]);
+      expect(list[index]).not.toHaveClass('hoverListItem');
+    });
+  });
 });
