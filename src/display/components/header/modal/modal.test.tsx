@@ -42,19 +42,22 @@ const modalListDisplayControlCheck = (elInfo: ElInfo): void => {
   expect(list.childElementCount).toBe(0);
 };
 
-// const listItemClickTest = (elInfo: ElInfo): void => {
-//   const { name, modalList } = elInfo;
-//   const { history } = rendering(elInfo);
-//   const list = screen.getAllByRole('listitem');
-//   modalList.forEach((val: ModalContent, index: number): void => {
-//     fireEvent.click(list[index]);
-//     if (textCheck(list[index].textContent)) {
-//       expect(history.location.pathname).toBe(`/${name}`);
-//       return;
-//     }
-//     expect(history.location.pathname).toBe(`/${name}/${val.id}`);
-//   });
-// };
+const listItemClickTest = (elInfo: ElInfo): void => {
+  const { history } = rendering(elInfo);
+  const directory = screen.getByRole('directory');
+  fireEvent.mouseEnter(directory);
+
+  const list = screen.getAllByRole('listitem');
+  const { name, modalList } = elInfo;
+  modalList.forEach((val: ModalContent, index: number): void => {
+    fireEvent.click(list[index]);
+    if (textCheck(list[index].textContent)) {
+      expect(history.location.pathname).toBe(`/${name}`);
+      return;
+    }
+    expect(history.location.pathname).toBe(`/${name}/${val.id}`);
+  });
+};
 
 describe('Modal Components', () => {
   const elCategoryInfo: ElInfo = {
@@ -79,10 +82,10 @@ describe('Modal Components', () => {
   test('searchByBrand click category page display', () => {
     categoryClickTest(elBrandInfo);
   });
-  // test('listItem click category/itemID page display', () => {
-  //   listItemClickTest(elCategoryInfo);
-  // });
-  // test('listItem click brand/itemID page display', () => {
-  //   listItemClickTest(elBrandInfo);
-  // });
+  test('listItem click category/itemID page display', () => {
+    listItemClickTest(elCategoryInfo);
+  });
+  test('listItem click brand/itemID page display', () => {
+    listItemClickTest(elBrandInfo);
+  });
 });
