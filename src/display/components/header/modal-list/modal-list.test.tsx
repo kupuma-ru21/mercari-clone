@@ -56,4 +56,15 @@ describe('ModalList Components', () => {
   test('listItem click brand/itemID page display', () => {
     listItemClickTest(elBrandInfo);
   });
+  test('categoryListItem background color switching test', () => {
+    categoryArray.forEach((item: ModalContent, index: number) => {
+      rendering({ item, elCategoryInfo });
+      const list = screen.getAllByRole('listitem');
+      expect(list[index]).not.toHaveClass('hoverListItem');
+      fireEvent.mouseEnter(list[index]);
+      expect(list[index]).toHaveClass('hoverListItem');
+      fireEvent.mouseLeave(list[index]);
+      expect(list[index]).not.toHaveClass('hoverListItem');
+    });
+  });
 });
