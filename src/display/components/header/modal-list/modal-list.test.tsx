@@ -39,6 +39,19 @@ const listItemClickTest = (elInfo: ElInfo): void => {
   });
 };
 
+const listItemBackColorSwitchTest = (elInfo: ElInfo): void => {
+  const { modalList } = elInfo;
+  modalList.forEach((item: ModalContent, index: number) => {
+    rendering({ item, elInfo });
+    const list = screen.getAllByRole('listitem');
+    expect(list[index]).not.toHaveClass('hoverListItem');
+    fireEvent.mouseEnter(list[index]);
+    expect(list[index]).toHaveClass('hoverListItem');
+    fireEvent.mouseLeave(list[index]);
+    expect(list[index]).not.toHaveClass('hoverListItem');
+  });
+};
+
 describe('ModalList Components', () => {
   const elCategoryInfo: ElInfo = {
     el: <SearchByCategory />,
@@ -57,25 +70,9 @@ describe('ModalList Components', () => {
     listItemClickTest(elBrandInfo);
   });
   test('categoryListItem background color switching test', () => {
-    categoryArray.forEach((item: ModalContent, index: number) => {
-      rendering({ item, elCategoryInfo });
-      const list = screen.getAllByRole('listitem');
-      expect(list[index]).not.toHaveClass('hoverListItem');
-      fireEvent.mouseEnter(list[index]);
-      expect(list[index]).toHaveClass('hoverListItem');
-      fireEvent.mouseLeave(list[index]);
-      expect(list[index]).not.toHaveClass('hoverListItem');
-    });
+    listItemBackColorSwitchTest(elCategoryInfo);
   });
   test('brandListItem background color switching test', () => {
-    brandArray.forEach((item: ModalContent, index: number) => {
-      rendering({ item, elBrandInfo });
-      const list = screen.getAllByRole('listitem');
-      expect(list[index]).not.toHaveClass('hoverListItem');
-      fireEvent.mouseEnter(list[index]);
-      expect(list[index]).toHaveClass('hoverListItem');
-      fireEvent.mouseLeave(list[index]);
-      expect(list[index]).not.toHaveClass('hoverListItem');
-    });
+    listItemBackColorSwitchTest(elBrandInfo);
   });
 });
