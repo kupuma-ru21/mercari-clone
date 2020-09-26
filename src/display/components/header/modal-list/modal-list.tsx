@@ -1,15 +1,8 @@
 import React, { useState } from 'react';
 import useReactRouter from 'use-react-router';
-import { ElInfo, ModalContent } from '@/types/modal';
 import { textCheck } from '@/logic/modal-list-logic';
+import { Props } from '@/types/modal-list';
 import Styles from './modal-list-style.scss';
-
-type Props = {
-  itemInfo: {
-    item: ModalContent;
-    elInfo: ElInfo;
-  };
-};
 
 const ModalList: React.FC<Props> = ({ itemInfo }) => {
   const [className, setClassName] = useState(Styles.listItem);

@@ -5,6 +5,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { categoryArray, brandArray } from '@/constans/header';
 import { ElInfo, ModalContent } from '@/types/modal';
 import { textCheck } from '@/logic/modal-list-logic';
+import { ItemInfo } from '@/types/modal-list';
 import {
   ModalList,
   SearchByCategory,
@@ -15,7 +16,7 @@ type RenderTypes = {
   history: MemoryHistory;
 };
 
-const rendering = (itemInfo): RenderTypes => {
+const rendering = (itemInfo: ItemInfo): RenderTypes => {
   const history = createMemoryHistory();
   render(
     <Router history={history}>
