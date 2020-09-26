@@ -30,6 +30,18 @@ const categoryClickTest = (elInfo: ElInfo): void => {
   expect(history.location.pathname).toBe(`/${name}`);
 };
 
+const modalListDisplayControlCheck = (elInfo: ElInfo): void => {
+  rendering(elInfo);
+  const list = screen.getByRole('list');
+  expect(list.childElementCount).toBe(0);
+
+  const directory = screen.getByRole('directory');
+  fireEvent.mouseEnter(directory);
+  expect(list.childElementCount).not.toBe(0);
+  fireEvent.mouseLeave(directory);
+  expect(list.childElementCount).toBe(0);
+};
+
 // const listItemClickTest = (elInfo: ElInfo): void => {
 //   const { name, modalList } = elInfo;
 //   const { history } = rendering(elInfo);
@@ -56,26 +68,10 @@ describe('Modal Components', () => {
     name: 'brand',
   };
   test('modalCategoryList display control check', () => {
-    rendering(elCategoryInfo);
-    const list = screen.getByRole('list');
-    expect(list.childElementCount).toBe(0);
-
-    const directory = screen.getByRole('directory');
-    fireEvent.mouseEnter(directory);
-    expect(list.childElementCount).not.toBe(0);
-    fireEvent.mouseLeave(directory);
-    expect(list.childElementCount).toBe(0);
+    modalListDisplayControlCheck(elCategoryInfo);
   });
   test('modalBrandList display control check', () => {
-    rendering(elBrandInfo);
-    const list = screen.getByRole('list');
-    expect(list.childElementCount).toBe(0);
-
-    const directory = screen.getByRole('directory');
-    fireEvent.mouseEnter(directory);
-    expect(list.childElementCount).not.toBe(0);
-    fireEvent.mouseLeave(directory);
-    expect(list.childElementCount).toBe(0);
+    modalListDisplayControlCheck(elBrandInfo);
   });
   test('searchByCategory click category page display', () => {
     categoryClickTest(elCategoryInfo);
