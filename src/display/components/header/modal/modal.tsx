@@ -56,7 +56,7 @@ const Modal: React.FC<Props> = ({ elInfo }: Props) => {
           </ul>
         </ModalContext.Provider>
         <div role="group">
-          {state.displayModalDetailFlg && (
+          {state.displayModalDetailFlg && elInfo.name === 'category' && (
             <>
               {categoryDetail[`categoryDetail_${state.listItemID}`].map(
                 (item) => (
