@@ -92,8 +92,8 @@ describe('Modal Components', () => {
     modalList.forEach((item, index) => {
       const listItems = screen.getAllByRole('listitem');
       fireEvent.mouseEnter(listItems[index]);
+      expect(listItems[index].textContent).toBe(item.text);
       expect(modalDetail.childElementCount).not.toBe(0);
-      expect(categoryDetail[`categoryDetail_${item.id}`]).not.toBeUndefined();
     });
 
     fireEvent.mouseLeave(directory);
