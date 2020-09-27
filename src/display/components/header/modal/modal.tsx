@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import useReactRouter from 'use-react-router';
 import { Props } from '@/types/modal';
 import { ModalContext } from '@/contexts';
-import { categoryDetail } from '@/constans/header';
 import { ModalList, ModalDetail } from '@/display/components';
 import Styles from './modal-style.scss';
 
@@ -12,6 +11,9 @@ const Modal: React.FC<Props> = ({ elInfo }: Props) => {
     displayModalListFlg: false,
     listItemID: 1,
   });
+  const { displayModalDetailFlg, displayModalListFlg } = state;
+  const detailFlg = displayModalDetailFlg && elInfo.name === 'category';
+
   const onMouseEnter = (): void => {
     setState({ ...state, displayModalListFlg: true });
   };
@@ -48,19 +50,9 @@ const Modal: React.FC<Props> = ({ elInfo }: Props) => {
       </div>
       <div className={Styles.modalListWrap}>
         <ModalContext.Provider value={{ state, setState }}>
-          <ul>{state.displayModalListFlg && <ModalList elInfo={elInfo} />}</ul>
+          <ul>{displayModalListFlg && <ModalList elInfo={elInfo} />}</ul>
+          <div role="group">{detailFlg && <ModalDetail />}</div>
         </ModalContext.Provider>
-        <div role="group">
-          {state.displayModalDetailFlg && elInfo.name === 'category' && (
-            <>
-              {categoryDetail[`categoryDetail_${state.listItemID}`].map(
-                (item) => (
-                  <ModalDetail key={item.id} item={item} />
-                )
-              )}
-            </>
-          )}
-        </div>
       </div>
     </div>
   );
