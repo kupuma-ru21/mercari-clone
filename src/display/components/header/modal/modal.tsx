@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import useReactRouter from 'use-react-router';
-import { Props, ModalContent } from '@/types/modal';
+import { Props } from '@/types/modal';
 import { ModalContext } from '@/contexts';
 import { categoryDetail } from '@/constans/header';
 import { ModalList, ModalDetail } from '@/display/components';
@@ -48,12 +48,7 @@ const Modal: React.FC<Props> = ({ elInfo }: Props) => {
       </div>
       <div className={Styles.modalListWrap}>
         <ModalContext.Provider value={{ state, setState }}>
-          <ul>
-            {state.displayModalListFlg &&
-              elInfo.modalList.map((item: ModalContent) => (
-                <ModalList itemInfo={{ item, elInfo }} key={item.id} />
-              ))}
-          </ul>
+          <ul>{state.displayModalListFlg && <ModalList elInfo={elInfo} />}</ul>
         </ModalContext.Provider>
         <div role="group">
           {state.displayModalDetailFlg && elInfo.name === 'category' && (

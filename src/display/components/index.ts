@@ -8,3 +8,4 @@ export { default as SearchByBrand } from './header/search-by-brand/search-by-bra
 export { default as Modal } from './header/modal/modal';
 export { default as ModalList } from './header/modal-list/modal-list';
 export { default as ModalDetail } from './header/modal-detail/modal-detail';
+export { default as ListItem } from './header/list-item/list-item';

@@ -5,10 +5,10 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { categoryArray, brandArray } from '@/constans/header';
 import { ElInfo, ModalContent } from '@/types/modal';
 import { textCheck } from '@/logic/modal-list-logic';
-import { ItemInfo } from '@/types/modal-list';
+import { ItemInfo } from '@/types/list-item';
 import { ModalContext } from '@/contexts';
 import {
-  ModalList,
+  ListItem,
   SearchByCategory,
   SearchByBrand,
 } from '@/display/components';
@@ -22,7 +22,7 @@ const rendering = (itemInfo: ItemInfo): RenderTypes => {
   render(
     <ModalContext.Provider value={{ state: {}, setState: () => jest.fn() }}>
       <Router history={history}>
-        <ModalList itemInfo={itemInfo} />
+        <ListItem itemInfo={itemInfo} />
       </Router>
     </ModalContext.Provider>
   );
