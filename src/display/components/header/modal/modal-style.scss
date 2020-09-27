@@ -2,7 +2,10 @@
   .head {
     color: #004daa;
   }
-  ul {
-    padding: 0;
+  .modalListWrap {
+    display: flex;
+    ul {
+      padding: 0;
+    }
   }
 }
