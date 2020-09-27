@@ -51,6 +51,31 @@ const modalListDisplayControlCheck = (elInfo: ElInfo): void => {
   expect(list.childElementCount).toBe(0);
 };
 
+const modalDetailDisplayControlTest = (elInfo: ElInfo): void => {
+  rendering(elInfo);
+  const modalDetail = screen.getByRole('group');
+  expect(modalDetail.childElementCount).toBe(0);
+
+  const directory = screen.getByRole('directory');
+  fireEvent.mouseEnter(directory);
+
+  const { modalList, name } = elInfo;
+  modalList.forEach((item, index) => {
+    const listItems = screen.getAllByRole('listitem');
+    fireEvent.mouseEnter(listItems[index]);
+    expect(listItems[index].textContent).toBe(item.text);
+
+    if (name === 'brand') {
+      expect(modalDetail.childElementCount).toBe(0);
+      return;
+    }
+    expect(modalDetail.childElementCount).not.toBe(0);
+  });
+
+  fireEvent.mouseLeave(directory);
+  expect(modalDetail.childElementCount).toBe(0);
+};
+
 describe('Modal Components', () => {
   const elCategoryInfo: ElInfo = {
     el: <SearchByCategory />,
@@ -81,39 +106,9 @@ describe('Modal Components', () => {
     categoryClickTest(elBrandInfo);
   });
   test('modalDetail display control test CategoryInfo', () => {
-    rendering(elCategoryInfo);
-    const modalDetail = screen.getByRole('group');
-    expect(modalDetail.childElementCount).toBe(0);
-
-    const directory = screen.getByRole('directory');
-    fireEvent.mouseEnter(directory);
-
-    const { modalList } = elCategoryInfo;
-    modalList.forEach((item, index) => {
-      const listItems = screen.getAllByRole('listitem');
-      fireEvent.mouseEnter(listItems[index]);
-      expect(listItems[index].textContent).toBe(item.text);
-      expect(modalDetail.childElementCount).not.toBe(0);
-    });
-
-    fireEvent.mouseLeave(directory);
-    expect(modalDetail.childElementCount).toBe(0);
+    modalDetailDisplayControlTest(elCategoryInfo);
   });
-
   test('modalDetail display control test BrandInfo', () => {
-    rendering(elBrandInfo);
-    const modalDetail = screen.getByRole('group');
-    expect(modalDetail.childElementCount).toBe(0);
-
-    const directory = screen.getByRole('directory');
-    fireEvent.mouseEnter(directory);
-
-    const { modalList } = elBrandInfo;
-    modalList.forEach((item, index) => {
-      const listItems = screen.getAllByRole('listitem');
-      fireEvent.mouseEnter(listItems[index]);
-      expect(listItems[index].textContent).toBe(item.text);
-      expect(modalDetail.childElementCount).toBe(0);
-    });
+    modalDetailDisplayControlTest(elBrandInfo);
   });
 });
