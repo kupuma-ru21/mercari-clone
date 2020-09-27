@@ -6,6 +6,7 @@ import { categoryArray, brandArray } from '@/constans/header';
 import { ElInfo, ModalContent } from '@/types/modal';
 import { textCheck } from '@/logic/modal-list-logic';
 import { ItemInfo } from '@/types/modal-list';
+import { ModalContext } from '@/contexts';
 import {
   ModalList,
   SearchByCategory,
@@ -19,9 +20,11 @@ type RenderTypes = {
 const rendering = (itemInfo: ItemInfo): RenderTypes => {
   const history = createMemoryHistory();
   render(
-    <Router history={history}>
-      <ModalList itemInfo={itemInfo} />
-    </Router>
+    <ModalContext.Provider value={{ state: {}, setState: () => jest.fn() }}>
+      <Router history={history}>
+        <ModalList itemInfo={itemInfo} />
+      </Router>
+    </ModalContext.Provider>
   );
   return { history };
 };

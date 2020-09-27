@@ -2,7 +2,7 @@ import React from 'react';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory, MemoryHistory } from 'history';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { categoryArray, brandArray } from '@/constans/header';
+import { categoryArray, brandArray, categoryDetail } from '@/constans/header';
 import { ElInfo } from '@/types/modal';
 import { Modal, SearchByCategory, SearchByBrand } from '@/display/components';
 
@@ -79,5 +79,24 @@ describe('Modal Components', () => {
   });
   test('searchByBrand click category page display', () => {
     categoryClickTest(elBrandInfo);
+  });
+  test('modalDetail display control test CategoryInfo', () => {
+    rendering(elCategoryInfo);
+    const modalDetail = screen.getByRole('group');
+    expect(modalDetail.childElementCount).toBe(0);
+
+    const directory = screen.getByRole('directory');
+    fireEvent.mouseEnter(directory);
+
+    const { modalList } = elCategoryInfo;
+    modalList.forEach((item, index) => {
+      const listItems = screen.getAllByRole('listitem');
+      fireEvent.mouseEnter(listItems[index]);
+      expect(modalDetail.childElementCount).not.toBe(0);
+      expect(categoryDetail[`categoryDetail_${item.id}`]).not.toBeUndefined();
+    });
+
+    fireEvent.mouseLeave(directory);
+    expect(modalDetail.childElementCount).toBe(0);
   });
 });
