@@ -99,4 +99,21 @@ describe('Modal Components', () => {
     fireEvent.mouseLeave(directory);
     expect(modalDetail.childElementCount).toBe(0);
   });
+
+  test('modalDetail display control test BrandInfo', () => {
+    rendering(elBrandInfo);
+    const modalDetail = screen.getByRole('group');
+    expect(modalDetail.childElementCount).toBe(0);
+
+    const directory = screen.getByRole('directory');
+    fireEvent.mouseEnter(directory);
+
+    const { modalList } = elBrandInfo;
+    modalList.forEach((item, index) => {
+      const listItems = screen.getAllByRole('listitem');
+      fireEvent.mouseEnter(listItems[index]);
+      expect(listItems[index].textContent).toBe(item.text);
+      expect(modalDetail.childElementCount).toBe(0);
+    });
+  });
 });
