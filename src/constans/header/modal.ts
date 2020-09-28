@@ -27,7 +27,7 @@ export const brandArray: ModalList = [
 ];
 
 export const categoryDetail = {
-  categoryDetail_1: [
+  categoryDetail1: [
     { id: 1, text: 'トップス' },
     { id: 2, text: 'ジャケット/アウター' },
     { id: 3, text: 'パンツ' },
@@ -44,7 +44,7 @@ export const categoryDetail = {
     { id: 14, text: '小物' },
     { id: 15, text: '時計' },
   ],
-  categoryDetail_2: [
+  categoryDetail2: [
     { id: 1, text: 'トップス' },
     { id: 2, text: 'ジャケット/アウター' },
     { id: 3, text: 'パンツ' },
@@ -60,7 +60,7 @@ export const categoryDetail = {
     { id: 13, text: 'アンダーウェア' },
     { id: 14, text: 'その他' },
   ],
-  categoryDetail_3: [
+  categoryDetail3: [
     { id: 1, text: 'ベビー服(女の子用)~95cm' },
     { id: 2, text: 'ベビー服(男の子用)~95cm' },
     { id: 3, text: 'ベビー服(男女兼用)~95cm' },
@@ -76,7 +76,7 @@ export const categoryDetail = {
     { id: 13, text: 'おもちゃ' },
     { id: 14, text: '行事/記念品' },
   ],
-  categoryDetail_4: [
+  categoryDetail4: [
     { id: 1, text: 'キッチン/食器' },
     { id: 2, text: 'ベッド/マットレス' },
     { id: 3, text: 'ソファ/ソファベッド' },
@@ -91,7 +91,7 @@ export const categoryDetail = {
     { id: 12, text: '季節/年中行事' },
     { id: 13, text: 'その他' },
   ],
-  categoryDetail_5: [
+  categoryDetail5: [
     { id: 1, text: '本' },
     { id: 2, text: '漫画' },
     { id: 3, text: '雑誌' },
@@ -100,7 +100,7 @@ export const categoryDetail = {
     { id: 6, text: 'レコード' },
     { id: 7, text: 'テレビゲーム' },
   ],
-  categoryDetail_6: [
+  categoryDetail6: [
     { id: 1, text: 'おもちゃ' },
     { id: 2, text: 'タレントグッズ' },
     { id: 3, text: 'コミック/アニメグッズ' },
@@ -113,7 +113,7 @@ export const categoryDetail = {
     { id: 10, text: 'アート用品' },
     { id: 11, text: 'その他' },
   ],
-  categoryDetail_7: [
+  categoryDetail7: [
     { id: 1, text: 'ベースメイク' },
     { id: 2, text: 'メイクアップ' },
     { id: 3, text: 'ネイルケア' },
@@ -126,7 +126,7 @@ export const categoryDetail = {
     { id: 10, text: 'ダイエット' },
     { id: 11, text: 'その他' },
   ],
-  categoryDetail_8: [
+  categoryDetail8: [
     { id: 1, text: 'スマートフォン/携帯電話' },
     { id: 2, text: 'スマホアクセサリー' },
     { id: 3, text: 'PC/タブレット' },
@@ -138,7 +138,7 @@ export const categoryDetail = {
     { id: 9, text: '生活家電' },
     { id: 10, text: 'その他' },
   ],
-  categoryDetail_9: [
+  categoryDetail9: [
     { id: 1, text: 'ゴルフ' },
     { id: 2, text: 'フィッシング' },
     { id: 3, text: '自転車' },
@@ -152,7 +152,7 @@ export const categoryDetail = {
     { id: 11, text: 'アウトドア' },
     { id: 12, text: 'その他' },
   ],
-  categoryDetail_10: [
+  categoryDetail10: [
     { id: 1, text: 'アクセサリー(女性用)' },
     { id: 2, text: 'ファッション/小物' },
     { id: 3, text: 'アクセサリー/時計' },
@@ -163,7 +163,7 @@ export const categoryDetail = {
     { id: 8, text: '二次創作物' },
     { id: 9, text: 'その他' },
   ],
-  categoryDetail_11: [
+  categoryDetail11: [
     { id: 1, text: '音楽' },
     { id: 2, text: 'スポーツ' },
     { id: 3, text: '演劇/芸能' },
@@ -173,7 +173,7 @@ export const categoryDetail = {
     { id: 7, text: '優待券/割引券' },
     { id: 8, text: 'その他' },
   ],
-  categoryDetail_12: [
+  categoryDetail12: [
     { id: 1, text: '自転車本体' },
     { id: 2, text: '自転車タイヤ/ホイール' },
     { id: 3, text: '自動車パーツ' },
@@ -182,7 +182,7 @@ export const categoryDetail = {
     { id: 6, text: 'オートバイパーツ' },
     { id: 7, text: 'オートバイアクセサリー' },
   ],
-  categoryDetail_13: [
+  categoryDetail13: [
     { id: 1, text: 'まとめ売り' },
     { id: 2, text: 'ペット用品' },
     { id: 3, text: '食品' },
@@ -193,5 +193,5 @@ export const categoryDetail = {
     { id: 8, text: '事務/店舗用品' },
     { id: 9, text: 'その他' },
   ],
-  categoryDetail_14: [{ id: 1, text: '' }],
+  categoryDetail14: [{ id: 1, text: '' }],
 };

@@ -5,7 +5,7 @@ import Styles from './modal-detail-style.scss';
 
 const ModalDetail: React.FC = () => {
   const { state } = useContext(ModalContext);
-  const detailkey = `categoryDetail_${state.listItemID}`;
+  const detailkey = `categoryDetail${state.listItemID}`;
   return (
     <ul>
       {categoryDetail[detailkey].map((item) => (
