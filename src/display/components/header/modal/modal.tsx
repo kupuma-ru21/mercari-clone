@@ -51,7 +51,9 @@ const Modal: React.FC<Props> = ({ elInfo }: Props) => {
       <div className={Styles.modalListWrap}>
         <ModalContext.Provider value={{ state, setState }}>
           <ul>{displayModalListFlg && <ModalList elInfo={elInfo} />}</ul>
-          <div role="group">{detailFlg && <ModalDetail />}</div>
+          <div role="group" className={Styles.detail}>
+            {detailFlg && <ModalDetail />}
+          </div>
         </ModalContext.Provider>
       </div>
     </div>

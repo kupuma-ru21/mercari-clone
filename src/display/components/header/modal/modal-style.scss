@@ -4,8 +4,14 @@
   }
   .modalListWrap {
     display: flex;
+    position: relative;
     ul {
       padding: 0;
+    }
+    .detail {
+      position: absolute;
+      left: 200px;
+      width: 400px;
     }
   }
 }
