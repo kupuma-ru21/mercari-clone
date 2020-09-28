@@ -1,4 +1,4 @@
-import { ModalList } from '@/types/modal';
+import { ModalList } from '@/types/header/modal';
 
 export const categoryArray: ModalList = [
   { id: 1, text: 'レディース' },

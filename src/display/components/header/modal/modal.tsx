@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import useReactRouter from 'use-react-router';
-import { Props } from '@/types/modal';
+import { Props } from '@/types/header/modal';
 import { ModalContext } from '@/contexts';
 import { ModalList, ModalDetail } from '@/display/components';
 import Styles from './modal-style.scss';

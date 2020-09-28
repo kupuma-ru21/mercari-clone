@@ -3,9 +3,9 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory, MemoryHistory } from 'history';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { categoryArray, brandArray } from '@/constans/header';
-import { ElInfo, ModalContent } from '@/types/modal';
+import { ElInfo, ModalContent } from '@/types/header/modal';
 import { textCheck } from '@/logic/modal-list-logic';
-import { ItemInfo } from '@/types/list-item';
+import { ItemInfo } from '@/types/header/list-item';
 import { ModalContext } from '@/contexts';
 import {
   ListItem,

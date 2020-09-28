@@ -1,4 +1,4 @@
-import { CategoryDetail } from '@/types/modal-detail';
+import { CategoryDetail } from '@/types/header/modal-detail';
 
 export const categoryDetail: CategoryDetail = {
   categoryDetail1: [

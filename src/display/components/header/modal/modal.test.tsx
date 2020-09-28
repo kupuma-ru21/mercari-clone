@@ -3,7 +3,7 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory, MemoryHistory } from 'history';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { categoryArray, brandArray, categoryDetail } from '@/constans/header';
-import { ElInfo } from '@/types/modal';
+import { ElInfo } from '@/types/header/modal';
 import { Modal, SearchByCategory, SearchByBrand } from '@/display/components';
 
 type RenderTypes = {

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Props } from '@/types/modal-list';
-import { ModalContent } from '@/types/modal';
+import { Props } from '@/types/header/modal-list';
+import { ModalContent } from '@/types/header/modal';
 import { ListItem } from '@/display/components';
 
 const ModalList: React.FC<Props> = ({ elInfo }) => {

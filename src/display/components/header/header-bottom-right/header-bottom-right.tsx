@@ -1,7 +1,7 @@
 import React, { memo, useState } from 'react';
 import useReactRouter from 'use-react-router';
 import { Button } from '@material-ui/core';
-import { Variant } from '@/types/header-bottom-right';
+import { Variant } from '@/types/header/header-bottom-right';
 import Styles from './header-bottom-right-style.scss';
 
 const HeaderBottomRight: React.FC = () => {

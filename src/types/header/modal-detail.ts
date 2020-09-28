@@ -1,4 +1,4 @@
-import { ModalContent } from '@/types/modal';
+import { ModalContent } from '@/types/header/modal';
 
 export type CategoryDetail = {
   categoryDetail1: ModalContent[];

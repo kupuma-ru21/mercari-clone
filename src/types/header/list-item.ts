@@ -1,4 +1,4 @@
-import { ElInfo, ModalContent } from '@/types/modal';
+import { ElInfo, ModalContent } from '@/types/header/modal';
 
 export type ItemInfo = {
   item: ModalContent;

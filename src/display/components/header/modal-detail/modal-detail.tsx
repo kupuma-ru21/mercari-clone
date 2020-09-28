@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { ModalContext } from '@/contexts';
-import { ModalContent } from '@/types/modal';
+import { ModalContent } from '@/types/header/modal';
 import { categoryDetail } from '@/constans/header';
 import Styles from './modal-detail-style.scss';
 
