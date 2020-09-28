@@ -1,4 +1,6 @@
-export const categoryDetail = {
+import { CategoryDetail } from '@/types/modal-detail';
+
+export const categoryDetail: CategoryDetail = {
   categoryDetail1: [
     { id: 1, text: 'トップス' },
     { id: 2, text: 'ジャケット/アウター' },
