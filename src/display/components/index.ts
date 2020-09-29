@@ -9,3 +9,4 @@ export { default as Modal } from './header/modal/modal';
 export { default as ModalList } from './header/modal-list/modal-list';
 export { default as ModalDetail } from './header/modal-detail/modal-detail';
 export { default as ListItem } from './header/list-item/list-item';
+export { default as DetailListItem } from './header/detail-list-item/detail-list-item';
