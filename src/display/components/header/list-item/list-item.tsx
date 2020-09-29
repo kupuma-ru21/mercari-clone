@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import useReactRouter from 'use-react-router';
-import { textCheck } from '@/logic/modal-list-logic';
+import { textCheck } from '@/logic/list-item-logic';
 import { Props } from '@/types/header/list-item';
 import { ModalContext } from '@/contexts';
 import Styles from './list-item-style.scss';

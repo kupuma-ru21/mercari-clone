@@ -4,7 +4,7 @@ import { createMemoryHistory, MemoryHistory } from 'history';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { categoryArray, brandArray } from '@/constans/header';
 import { ElInfo, ModalContent } from '@/types/header/modal';
-import { textCheck } from '@/logic/modal-list-logic';
+import { textCheck } from '@/logic/list-item-logic';
 import { ItemInfo } from '@/types/header/list-item';
 import { ModalContext } from '@/contexts';
 import {
@@ -56,7 +56,7 @@ const listItemBackColorSwitchTest = (elInfo: ElInfo): void => {
   });
 };
 
-describe('ModalList Components', () => {
+describe('ListItem Components', () => {
   const elCategoryInfo: ElInfo = {
     el: <SearchByCategory />,
     modalList: categoryArray,
