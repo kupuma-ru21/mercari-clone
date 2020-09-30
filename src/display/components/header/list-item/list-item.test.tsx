@@ -11,7 +11,7 @@ import {
   ListItem,
   SearchByCategory,
   SearchByBrand,
-} from '@/display/components';
+} from '@/display/components/header';
 
 type RenderTypes = {
   history: MemoryHistory;

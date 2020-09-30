@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import useReactRouter from 'use-react-router';
 import { Props } from '@/types/header/modal';
 import { ModalContext } from '@/contexts';
-import { ModalList, ModalDetail } from '@/display/components';
+import { ModalList, ModalDetail } from '@/display/components/header';
 import Styles from './modal-style.scss';
 
 const Modal: React.FC<Props> = ({ elInfo }: Props) => {

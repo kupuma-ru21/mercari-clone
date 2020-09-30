@@ -4,7 +4,11 @@ import { createMemoryHistory, MemoryHistory } from 'history';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { categoryArray, brandArray } from '@/constans/header';
 import { ElInfo } from '@/types/header/modal';
-import { Modal, SearchByCategory, SearchByBrand } from '@/display/components';
+import {
+  Modal,
+  SearchByCategory,
+  SearchByBrand,
+} from '@/display/components/header';
 
 type RenderTypes = {
   history: MemoryHistory;

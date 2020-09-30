@@ -2,7 +2,7 @@ import React from 'react';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory, MemoryHistory } from 'history';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { HeaderBottomRight } from '@/display/components';
+import { HeaderBottomRight } from '@/display/components/header';
 
 type RenderTypes = {
   history: MemoryHistory;

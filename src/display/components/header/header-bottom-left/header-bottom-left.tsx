@@ -1,6 +1,10 @@
 import React, { memo } from 'react';
 import { categoryArray, brandArray } from '@/constans/header';
-import { Modal, SearchByCategory, SearchByBrand } from '@/display/components';
+import {
+  Modal,
+  SearchByCategory,
+  SearchByBrand,
+} from '@/display/components/header';
 import Styles from './header-bottom-left-style.scss';
 
 const HeaderBottomLeft: React.FC = () => (

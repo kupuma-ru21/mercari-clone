@@ -1,5 +1,8 @@
 import React, { memo } from 'react';
-import { HeaderBottomLeft, HeaderBottomRight } from '@/display/components';
+import {
+  HeaderBottomLeft,
+  HeaderBottomRight,
+} from '@/display/components/header';
 import Styles from './header-bottom-style.scss';
 
 const HeaderBottom: React.FC = () => {

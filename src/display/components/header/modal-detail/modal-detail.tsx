@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { ModalContext } from '@/contexts';
 import { ModalContent } from '@/types/header/modal';
 import { categoryDetail } from '@/constans/header';
-import { DetailListItem } from '@/display/components';
+import { DetailListItem } from '@/display/components/header';
 import Styles from './modal-detail-style.scss';
 
 const ModalDetail: React.FC = () => {

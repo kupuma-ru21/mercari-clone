@@ -3,7 +3,7 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory, MemoryHistory } from 'history';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { alt } from '@/constans/header';
-import { Header } from '@/display/components';
+import { Header } from '@/display/components/header';
 
 type RenderTypes = {
   history: MemoryHistory;

@@ -5,7 +5,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { categoryArray, categoryDetail } from '@/constans/header';
 import { ModalContent } from '@/types/header/modal';
 import { ModalContext } from '@/contexts';
-import { DetailListItem } from '@/display/components';
+import { DetailListItem } from '@/display/components/header';
 
 const rendering = (item: ModalContent): void => {
   const history = createMemoryHistory();
