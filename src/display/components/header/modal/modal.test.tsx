@@ -65,14 +65,15 @@ const modalDetailDisplayControlTest = (elInfo: ElInfo): void => {
 
   const { modalList, name } = elInfo;
   modalList.forEach((item, index) => {
-    const listItems = screen.getAllByRole('listitem');
-    fireEvent.mouseEnter(listItems[index]);
-    expect(listItems[index].textContent).toBe(item.text);
-
     if (name === 'brand') {
       expect(modalDetail.childElementCount).toBe(0);
       return;
     }
+
+    const listItems = screen.getAllByRole('listitem');
+    expect(listItems[index].textContent).toBe(item.text);
+
+    fireEvent.mouseEnter(listItems[index]);
     if (item.text === 'カテゴリー 一覧') {
       expect(modalDetail.childElementCount).toBe(0);
       return;
