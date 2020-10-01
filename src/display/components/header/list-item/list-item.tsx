@@ -12,6 +12,10 @@ const ListItem: React.FC<Props> = ({ itemInfo }) => {
 
   const onMouseEnter = (): void => {
     setClassName([Styles.listItem, Styles.hoverListItem].join(' '));
+    if (item.text === 'カテゴリー 一覧') {
+      setState({ ...state, displayModalDetailFlg: false, listItemID: item.id });
+      return;
+    }
     setState({ ...state, displayModalDetailFlg: true, listItemID: item.id });
   };
   const onMouseLeave = (): void => setClassName(Styles.listItem);
