@@ -4,7 +4,7 @@ import { createMemoryHistory, MemoryHistory } from 'history';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { categoryArray, brandArray } from '@/constans/header';
 import { ElInfo, ModalContent } from '@/types/header/modal';
-import { textCheck } from '@/logic/list-item-logic';
+import { textCheck } from '@/logic/header/list-item-logic';
 import { ItemInfo } from '@/types/header/list-item';
 import { ModalContext } from '@/contexts';
 import {
