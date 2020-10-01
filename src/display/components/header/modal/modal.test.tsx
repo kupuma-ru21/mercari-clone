@@ -3,6 +3,7 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory, MemoryHistory } from 'history';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { categoryArray, brandArray } from '@/constans/header';
+import { categoryListTextCheck } from '@/logic/header/list-item-logic';
 import { ElInfo } from '@/types/header/modal';
 import {
   Modal,
@@ -74,7 +75,7 @@ const modalDetailDisplayControlTest = (elInfo: ElInfo): void => {
     expect(listItems[index].textContent).toBe(item.text);
 
     fireEvent.mouseEnter(listItems[index]);
-    if (item.text === 'カテゴリー 一覧') {
+    if (categoryListTextCheck(item.text)) {
       expect(modalDetail.childElementCount).toBe(0);
       return;
     }

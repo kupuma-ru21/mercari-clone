@@ -1,6 +1,9 @@
 import React, { useState, useContext } from 'react';
 import useReactRouter from 'use-react-router';
-import { textCheck } from '@/logic/list-item-logic';
+import {
+  categoryListTextCheck,
+  textCheck,
+} from '@/logic/header/list-item-logic';
 import { Props } from '@/types/header/list-item';
 import { ModalContext } from '@/contexts';
 import Styles from './list-item-style.scss';
@@ -12,7 +15,7 @@ const ListItem: React.FC<Props> = ({ itemInfo }) => {
 
   const onMouseEnter = (): void => {
     setClassName([Styles.listItem, Styles.hoverListItem].join(' '));
-    if (item.text === 'カテゴリー 一覧') {
+    if (categoryListTextCheck(item.text)) {
       setState({ ...state, displayModalDetailFlg: false, listItemID: item.id });
       return;
     }
