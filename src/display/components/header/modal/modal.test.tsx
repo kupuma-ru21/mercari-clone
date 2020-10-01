@@ -73,6 +73,10 @@ const modalDetailDisplayControlTest = (elInfo: ElInfo): void => {
       expect(modalDetail.childElementCount).toBe(0);
       return;
     }
+    if (item.text === 'カテゴリー 一覧') {
+      expect(modalDetail.childElementCount).toBe(0);
+      return;
+    }
     expect(modalDetail.childElementCount).not.toBe(0);
   });
 
