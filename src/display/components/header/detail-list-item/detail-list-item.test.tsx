@@ -5,6 +5,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { categoryArray, categoryDetail } from '@/constans/header';
 import { ModalContent } from '@/types/header/modal';
 import { ModalContext } from '@/contexts';
+import { categoryListTextCheck } from '@/logic/header/list-item-logic';
 import { DetailListItem } from '@/display/components/header';
 
 const rendering = (item: ModalContent): void => {
@@ -21,6 +22,7 @@ const rendering = (item: ModalContent): void => {
 describe('ModalDetailList Components', () => {
   test('categoryDetail ListItem background color switching test', () => {
     categoryArray.forEach((categoryListItemItem: ModalContent) => {
+      if (categoryListTextCheck(categoryListItemItem.text)) return;
       categoryDetail[`categoryDetail${categoryListItemItem.id}`].forEach(
         (detailListItem: ModalContent, index: number) => {
           rendering(detailListItem);
