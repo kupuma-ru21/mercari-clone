@@ -167,5 +167,4 @@ export const categoryDetail: CategoryDetail = {
     { id: 8, text: '事務/店舗用品' },
     { id: 9, text: 'その他' },
   ],
-  categoryDetail14: [{ id: 1, text: '' }],
 };

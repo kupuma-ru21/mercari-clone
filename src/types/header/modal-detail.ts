@@ -14,5 +14,4 @@ export type CategoryDetail = {
   categoryDetail11: ModalContent[];
   categoryDetail12: ModalContent[];
   categoryDetail13: ModalContent[];
-  categoryDetail14: ModalContent[];
 };
