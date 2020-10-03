@@ -8,7 +8,7 @@ import { ModalContext } from '@/contexts';
 import { categoryListTextCheck } from '@/logic/header/list-item-logic';
 import { DetailListItem } from '@/display/components/header';
 
-const rendering = (item: ModalContent): void => {
+const detailListItemRender = (item: ModalContent): void => {
   const history = createMemoryHistory();
   render(
     <ModalContext.Provider value={{ state: {}, setState: () => jest.fn() }}>
@@ -25,7 +25,7 @@ describe('ModalDetailList Components', () => {
       if (categoryListTextCheck(categoryListItemItem.text)) return;
       categoryDetail[`categoryDetail${categoryListItemItem.id}`].forEach(
         (detailListItem: ModalContent, index: number) => {
-          rendering(detailListItem);
+          detailListItemRender(detailListItem);
           const list = screen.getAllByRole('listitem');
           expect(list[index]).not.toHaveClass('hoverListItem');
           fireEvent.mouseEnter(list[index]);
