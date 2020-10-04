@@ -11,7 +11,7 @@ const ModalDetail: React.FC = () => {
   return (
     <ul className={Styles.modalDetailWrap}>
       {categoryDetail[detailkey].map((item: ModalContent) => (
-        <DetailListItem key={item.id} item={item} />
+        <DetailListItem key={item.id} detailItem={item} />
       ))}
     </ul>
   );

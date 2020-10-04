@@ -4,10 +4,10 @@ import { ModalContent } from '@/types/header/modal';
 import Styles from './detail-list-item-style.scss';
 
 type Props = {
-  item: ModalContent;
+  detailItem: ModalContent;
 };
 
-const DetailListItem: React.FC<Props> = ({ item }) => {
+const DetailListItem: React.FC<Props> = ({ detailItem }) => {
   const [className, setClassName] = useState(Styles.listItem);
   const onMouseEnter = (): void => {
     setClassName([Styles.listItem, Styles.hoverListItem].join(' '));
@@ -16,7 +16,7 @@ const DetailListItem: React.FC<Props> = ({ item }) => {
 
   const { history } = useReactRouter();
   const clickDetailItem = (): void => {
-    history.push(`/category/${item.id}`);
+    history.push(`/category/${detailItem.id}`);
   };
 
   return (
@@ -26,7 +26,7 @@ const DetailListItem: React.FC<Props> = ({ item }) => {
       onMouseLeave={onMouseLeave}
       onClick={clickDetailItem}
     >
-      {item.text}
+      {detailItem.text}
     </li>
   );
 };

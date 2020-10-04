@@ -27,12 +27,12 @@ const modalRender = (elInfo: ElInfo): void => {
   );
 };
 
-const detailListItemRender = (item: ModalContent): RenderTypes => {
+const detailItemRender = (detailItem: ModalContent): RenderTypes => {
   const history = createMemoryHistory();
   render(
     <ModalContext.Provider value={{ state: {}, setState: () => jest.fn() }}>
       <Router history={history}>
-        <DetailListItem item={item} />
+        <DetailListItem detailItem={detailItem} />
       </Router>
     </ModalContext.Provider>
   );
@@ -69,13 +69,13 @@ const modalDetailDisplayControlTest = (elInfo: ElInfo): void => {
   expect(modalDetail.childElementCount).toBe(0);
 };
 
-const detailListItemBackColorSwitchTest = (detailkey: number) => {
-  test(`categoryDetail${detailkey} BackColorSwitchTest`, () => {
-    categoryDetail[`categoryDetail${detailkey}`].forEach(
-      (detailListItem: ModalContent, index: number) => {
-        detailListItemRender(detailListItem);
+const detailItemBackColorSwitchTest = (key: number) => {
+  test(`categoryDetail${key} BackColorSwitchTest`, () => {
+    categoryDetail[`categoryDetail${key}`].forEach(
+      (detailItem: ModalContent, index: number) => {
+        detailItemRender(detailItem);
         const list = screen.getAllByRole('listitem');
-        expect(list[index].textContent).toBe(detailListItem.text);
+        expect(list[index].textContent).toBe(detailItem.text);
         expect(list[index]).not.toHaveClass('hoverListItem');
         fireEvent.mouseEnter(list[index]);
         expect(list[index]).toHaveClass('hoverListItem');
@@ -86,17 +86,15 @@ const detailListItemBackColorSwitchTest = (detailkey: number) => {
   });
 };
 
-const detailListItemClickTest = (detailkey: number) => {
-  test(`categoryDetail${detailkey} ClickTest`, () => {
-    categoryDetail[`categoryDetail${detailkey}`].forEach(
-      (detailListItem: ModalContent, index: number) => {
-        const { history } = detailListItemRender(detailListItem);
+const detailItemClickTest = (key: number) => {
+  test(`categoryDetail${key} ClickTest`, () => {
+    categoryDetail[`categoryDetail${key}`].forEach(
+      (detailItem: ModalContent, index: number) => {
+        const { history } = detailItemRender(detailItem);
         const list = screen.getAllByRole('listitem');
-        expect(list[index].textContent).toBe(detailListItem.text);
+        expect(list[index].textContent).toBe(detailItem.text);
         fireEvent.click(list[index]);
-        expect(history.location.pathname).toBe(
-          `/category/${detailListItem.id}`
-        );
+        expect(history.location.pathname).toBe(`/category/${detailItem.id}`);
       }
     );
   });
@@ -123,8 +121,8 @@ describe('ModalDetailList Components', () => {
   describe('categoryDetail Tests', () => {
     categoryArray.forEach((categoryListItemItem: ModalContent) => {
       if (categoryListTextCheck(categoryListItemItem.text)) return;
-      detailListItemBackColorSwitchTest(categoryListItemItem.id);
-      detailListItemClickTest(categoryListItemItem.id);
+      detailItemBackColorSwitchTest(categoryListItemItem.id);
+      detailItemClickTest(categoryListItemItem.id);
     });
   });
 });
