@@ -65,18 +65,20 @@ const modalDetailDisplayControlTest = (elInfo: ElInfo): void => {
 };
 
 const detailListItemBackColorSwitchTest = (detailkey: number) => {
-  categoryDetail[`categoryDetail${detailkey}`].forEach(
-    (detailListItem: ModalContent, index: number) => {
-      detailListItemRender(detailListItem);
-      const list = screen.getAllByRole('listitem');
-      expect(list[index].textContent).toBe(detailListItem.text);
-      expect(list[index]).not.toHaveClass('hoverListItem');
-      fireEvent.mouseEnter(list[index]);
-      expect(list[index]).toHaveClass('hoverListItem');
-      fireEvent.mouseLeave(list[index]);
-      expect(list[index]).not.toHaveClass('hoverListItem');
-    }
-  );
+  test(`categoryDetail${detailkey} BackColorSwitchTest`, () => {
+    categoryDetail[`categoryDetail${detailkey}`].forEach(
+      (detailListItem: ModalContent, index: number) => {
+        detailListItemRender(detailListItem);
+        const list = screen.getAllByRole('listitem');
+        expect(list[index].textContent).toBe(detailListItem.text);
+        expect(list[index]).not.toHaveClass('hoverListItem');
+        fireEvent.mouseEnter(list[index]);
+        expect(list[index]).toHaveClass('hoverListItem');
+        fireEvent.mouseLeave(list[index]);
+        expect(list[index]).not.toHaveClass('hoverListItem');
+      }
+    );
+  });
 };
 
 describe('ModalDetailList Components', () => {
@@ -96,7 +98,11 @@ describe('ModalDetailList Components', () => {
   test('modalDetail display control test BrandInfo', () => {
     modalDetailDisplayControlTest(elBrandInfo);
   });
-  test('categoryDetail1 background color switching test', () => {
-    detailListItemBackColorSwitchTest(1);
+
+  describe('categoryDetail Tests', () => {
+    categoryArray.forEach((categoryListItemItem: ModalContent) => {
+      if (categoryListTextCheck(categoryListItemItem.text)) return;
+      detailListItemBackColorSwitchTest(categoryListItemItem.id);
+    });
   });
 });
