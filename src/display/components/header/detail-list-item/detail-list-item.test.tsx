@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
+import { createMemoryHistory, MemoryHistory } from 'history';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { brandArray, categoryArray, categoryDetail } from '@/constans/header';
 import { ElInfo, ModalContent } from '@/types/header/modal';
@@ -13,6 +13,10 @@ import {
   SearchByCategory,
 } from '@/display/components/header';
 
+type RenderTypes = {
+  history: MemoryHistory;
+};
+
 const modalRender = (elInfo: ElInfo): void => {
   const history = createMemoryHistory();
   const { el, modalList, name } = elInfo;
@@ -23,7 +27,7 @@ const modalRender = (elInfo: ElInfo): void => {
   );
 };
 
-const detailListItemRender = (item: ModalContent): void => {
+const detailListItemRender = (item: ModalContent): RenderTypes => {
   const history = createMemoryHistory();
   render(
     <ModalContext.Provider value={{ state: {}, setState: () => jest.fn() }}>
@@ -32,6 +36,7 @@ const detailListItemRender = (item: ModalContent): void => {
       </Router>
     </ModalContext.Provider>
   );
+  return { history };
 };
 
 const modalDetailDisplayControlTest = (elInfo: ElInfo): void => {
@@ -81,6 +86,22 @@ const detailListItemBackColorSwitchTest = (detailkey: number) => {
   });
 };
 
+const detailListItemClickTest = (detailkey: number) => {
+  test(`categoryDetail${detailkey} ClickTest`, () => {
+    categoryDetail[`categoryDetail${detailkey}`].forEach(
+      (detailListItem: ModalContent, index: number) => {
+        const { history } = detailListItemRender(detailListItem);
+        const list = screen.getAllByRole('listitem');
+        expect(list[index].textContent).toBe(detailListItem.text);
+        fireEvent.click(list[index]);
+        expect(history.location.pathname).toBe(
+          `/category/${detailListItem.id}`
+        );
+      }
+    );
+  });
+};
+
 describe('ModalDetailList Components', () => {
   const elCategoryInfo: ElInfo = {
     el: <SearchByCategory />,
@@ -103,6 +124,7 @@ describe('ModalDetailList Components', () => {
     categoryArray.forEach((categoryListItemItem: ModalContent) => {
       if (categoryListTextCheck(categoryListItemItem.text)) return;
       detailListItemBackColorSwitchTest(categoryListItemItem.id);
+      detailListItemClickTest(categoryListItemItem.id);
     });
   });
 });
